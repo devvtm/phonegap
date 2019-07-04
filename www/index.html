@@ -22,12 +22,12 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta charset="utf-8"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="msapplication-tap-highlight" content="no"/>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"/>
     <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *"/>
     <!-- Good default declaration:
     * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
     * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
@@ -38,29 +38,42 @@
     -->
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
     <title>Hello World</title>
 </head>
 
 <body>
-    <div class="app">
-        <h1>VTM</h1> 
-    </div>
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript">
-        app.initialize();
-    </script>
-    <script type="text/javascript" charset="utf-8">
-        document.addEventListener("deviceready", onDeviceReady, false);
+<div class="app">
+    <h1>VTM</h1>
+</div>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
+    app.initialize();
+</script>
+<script type="text/javascript" charset="utf-8">
 
-        function onDeviceReady() {
-            var ref = window.open('http://apache.org', '_blank', 'location=yes');
-            ref.addEventListener('loadstart', function(event) { alert('start: ' + event.url); });
-            ref.addEventListener('loadstop', function(event) { alert('stop: ' + event.url); });
-            ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
-            ref.addEventListener('exit', function(event) { alert(event.type); });
-        }
-    </script>
+    function loadPage()
+    {
+        var ref = window.open('https://proj.vtm-dorproekt.ru:9443/', '_system', 'location=no,closebuttoncaption=Done,toolbar=no');
+        ref.addEventListener('loadstart', function (event)
+        {
+            alert('start: ' + event.url);
+        });
+        ref.addEventListener('loadstop', function (event)
+        {
+            alert('stop: ' + event.url);
+        });
+        ref.addEventListener('loaderror', function (event)
+        {
+            alert('error: ' + event.message);
+        });
+        ref.addEventListener('exit', function (event)
+        {
+            alert(event.type);
+        });
+    }
+</script>
+<button type="button" onclick="loadPage()">Перейти на сайт</button>
 </body>
 </html>
