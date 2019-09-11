@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8"/>
     <meta name="format-detection" content="telephone=no"/>
@@ -16,38 +17,13 @@
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/popper.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/login.js" ></script>
-    <script type="text/javascript">
-        app.initialize();
-
-        $(document).ready(function(){
-            var userId = localStorage.getItem('userId');
-
-            if (userId != null)
-            {
-                window.loadMainPage();
-            }
-        })
-    </script>
+    <script type="text/javascript" src="js/main.js"></script>
     <title>Hello World</title>
 </head>
 
 <body>
 
-<div class="alert alert-danger invisible" id="error-alert" role="alert">
-    Не верный логин или пароль
-</div>
+<button type="button" onclick="window.logout()" class="btn btn-primary size-full">Выйти</button>
 
-<div class="login-form">
-    <form>
-        <div class="form-group">
-            <input type="text" class="form-control" id="login" aria-describedby="emailHelp" placeholder="Логин">
-        </div>
-        <div class="form-group">
-            <input type="password" class="form-control" id="password" placeholder="Пароль">
-        </div>
-        <button type="button" onclick="window.login()" class="btn btn-primary size-full">Войти</button>
-    </form>
-</div>
 </body>
 </html>

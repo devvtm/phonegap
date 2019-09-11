@@ -1,79 +1,53 @@
 <!DOCTYPE html>
-<!--
-    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
-
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
-
 <head>
     <meta charset="utf-8"/>
     <meta name="format-detection" content="telephone=no"/>
     <meta name="msapplication-tap-highlight" content="no"/>
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"/>
-    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
     <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *"/>
-    <!-- Good default declaration:
-    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-        * Enable inline JS: add 'unsafe-inline' to default-src
-        * Enable eval(): add 'unsafe-eval' to default-src
-    * Create your own at http://cspisawesome.com
-    -->
-    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
-
     <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/utils.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/popper.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/login.js" ></script>
+    <script type="text/javascript">
+        app.initialize();
+
+        $(document).ready(function(){
+            var userId = localStorage.getItem('userId');
+
+            if (userId != null)
+            {
+                window.loadMainPage();
+            }
+        })
+    </script>
     <title>Hello World</title>
 </head>
 
 <body>
-<div class="app">
-    <h1>VTM</h1>
-</div>
-<script type="text/javascript" src="cordova.js"></script>
-<script type="text/javascript" src="js/index.js"></script>
-<script type="text/javascript">
-    app.initialize();
-</script>
-<script type="text/javascript" charset="utf-8">
 
-    function loadPage()
-    {
-        var ref = window.open('https://proj.vtm-dorproekt.ru:9443/', '_system', 'location=no,closebuttoncaption=Done,toolbar=no');
-        ref.addEventListener('loadstart', function (event)
-        {
-            alert('start: ' + event.url);
-        });
-        ref.addEventListener('loadstop', function (event)
-        {
-            alert('stop: ' + event.url);
-        });
-        ref.addEventListener('loaderror', function (event)
-        {
-            alert('error: ' + event.message);
-        });
-        ref.addEventListener('exit', function (event)
-        {
-            alert(event.type);
-        });
-    }
-</script>
-<button type="button" onclick="loadPage()">Перейти на сайт</button>
+<div class="alert alert-danger invisible" id="error-alert" role="alert">
+    Не верный логин или пароль
+</div>
+
+<div class="login-form">
+    <form>
+        <div class="form-group">
+            <input type="text" class="form-control" id="login" aria-describedby="emailHelp" placeholder="Логин">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" id="password" placeholder="Пароль">
+        </div>
+        <button type="button" onclick="window.login()" class="btn btn-primary size-full">Войти</button>
+    </form>
+</div>
 </body>
 </html>
