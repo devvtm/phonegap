@@ -54,5 +54,5 @@ var app = {
 
 var config = {
     loginUrl: "http://127.0.0.1:8090/mobileapp/login",
-    meetingsUrl: "http://127.0.0.1:8090/mobileapp/getTodayMeetings"
+    meetingsUrl: "http://127.0.0.1:8090/mobileapp/loadData"
 };
