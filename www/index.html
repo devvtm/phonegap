@@ -27,12 +27,12 @@
             {
                 window.loadMainPage();
             }
-        })
+        });
     </script>
     <title>Hello World</title>
 </head>
 
-<body>
+<body class="bg-login">
 
 <div class="alert alert-danger invisible" id="error-alert" role="alert">
     Не верный логин или пароль
@@ -41,12 +41,12 @@
 <div class="login-form">
     <form>
         <div class="form-group">
-            <input type="text" class="form-control" id="login" aria-describedby="emailHelp" placeholder="Логин">
+            <input type="text" class="form-control input-lg" id="login" aria-describedby="emailHelp" placeholder="Логин">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" id="password" placeholder="Пароль">
+            <input type="password" class="form-control input-lg" id="password" placeholder="Пароль">
         </div>
-        <button type="button" onclick="window.login()" class="btn btn-primary size-full">Войти</button>
+        <button type="button" onclick="window.login()" class="btn btn-primary input-lg size-full">Войти</button>
     </form>
 </div>
 </body>

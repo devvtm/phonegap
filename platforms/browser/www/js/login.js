@@ -9,7 +9,7 @@ function login()
 
     if (!errorVisible)
     {
-        $.post("http://127.0.0.1:8090/mobileapp/login",
+        $.post(config.loginUrl,
             {
                 login: login,
                 password: password

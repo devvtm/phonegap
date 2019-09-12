@@ -8,6 +8,7 @@
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"/>
     <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *"/>
     <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
     <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- Scripts -->
@@ -19,11 +20,36 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <title>Hello World</title>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            window.loadMeetings();
+        });
+    </script>
 </head>
 
 <body>
 
 <button type="button" onclick="window.logout()" class="btn btn-primary size-full">Выйти</button>
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item width-50">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#meetings" role="tab" aria-controls="meetings" aria-selected="true">Совещания</a>
+    </li>
+    <li class="nav-item width-50">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Сообщения</a>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="meetings-tab">
+        <!--Совещания-->
+
+
+    </div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="messages-tab">
+        <!--Сообщения-->
+
+    </div>
+</div>
 
 </body>
 </html>
