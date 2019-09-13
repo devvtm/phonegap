@@ -125,5 +125,4 @@
     <!-- Can omit if not targetting Windows Phone -->
     <preference name="windows-appx-target" value="8.1-phone" />
     <preference name="WindowsToastCapable" value="true" />
-    <plugin name="com.onesignal.plugins.onesignal" spec="1.5.0" source="pgb" />
 </widget>
