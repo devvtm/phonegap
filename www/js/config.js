@@ -3,5 +3,5 @@ var config = {
     loginUrl: siteUrl + "/mobileapp/login",
     dataUrl: siteUrl + "/mobileapp/loadData",
     meetingUrl: siteUrl + "/app#NewMeetingChart/meetingChart=",
-    messageReadUrl: siteUrl + "/mobileapp/messageread"
+    messageReadUrl: siteUrl + "/mobileapp/messageRead"
 };

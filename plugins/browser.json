@@ -63,6 +63,9 @@
         },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.vtm.project"
+        },
+        "onesignal-cordova-plugin": {
+            "PACKAGE_NAME": "com.vtm.project"
         }
     },
     "dependent_plugins": {
