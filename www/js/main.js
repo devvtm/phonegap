@@ -116,5 +116,19 @@ function buildMessageItem(item)
     content = content.split("target='_system'").join("");
     content = content.split("href").join("target='_system' href");
 
+    content += "<button type='button' class='btn btn-primary btn-sm link-btn' onclick='setMessageReaded(" + item.confirmationId + ")'>Прочитано</button>";
+
     return "<tr><td>" + content + "</td></tr>";
+}
+
+function setMessageReaded(confirmationId)
+{
+    $.post(config.messageReadUrl,
+        {
+            confirmationId: confirmationId
+        },
+        function (json, status)
+        {
+            loadData();
+        });
 }
