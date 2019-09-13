@@ -69,7 +69,7 @@
     <platform name="browser">
         <preference name="SplashScreen" value="images/browser/splashscreen.jpg" /> <!-- defaults to "img/logo.png" -->
         <preference name="SplashScreenDelay" value="10000" /> <!-- defaults to "3000" -->
-        <preference name="SplashScreenBackgroundColor" value="green" /> <!-- defaults to "#464646" -->
+        <preference name="SplashScreenBackgroundColor" value="green" /> <!-- defaults to "#ffffff" -->
         <preference name="ShowSplashScreen" value="false" /> <!-- defaults to "true" -->
         <preference name="SplashScreenWidth" value="600" /> <!-- defaults to "170" -->
         <preference name="SplashScreenHeight" value="300" /> <!-- defaults to "200" -->

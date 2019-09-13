@@ -27,7 +27,7 @@ var cordova = require('cordova');
 var isPhone = (cordova.platformId == "windows") && WinJS.Utilities.isPhone;
 var isHosted = window.location.protocol.indexOf('http') === 0;
 var localSplash = null, localSplashImage = null;
-var bgColor = "#464646"; // default backgrond color; TDOO - read it from .appxmanifest
+var bgColor = "#ffffff"; // default backgrond color; TDOO - read it from .appxmanifest
 var splashImageSrc = (isHosted ? "ms-appx-web" : "ms-appx") + ":///images/" +
     (isPhone ? "splashscreenphone.png" : "splashscreen.png");
 

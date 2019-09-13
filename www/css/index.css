@@ -30,7 +30,6 @@ body {
     height: 100%;
     margin: 0px;
     padding: 0px;
-    text-transform: uppercase;
     width: 100%;
 }
 
@@ -83,7 +82,7 @@ h1 {
 }
 
 .event.listening {
-    background-color: #333333;
+    background-color: #ffffff;
     display: block;
 }
 
@@ -122,7 +121,7 @@ h1 {
 }
 
 .login-form {
-    margin-top: 30%;
+    margin-top: 40px;
     margin-left: 5%;
     margin-right: 5%;
 }
@@ -134,4 +133,10 @@ h1 {
 .invisible
 {
     display: none;
+}
+
+.logo
+{
+    text-align: center;
+    margin-top: 50px;
 }

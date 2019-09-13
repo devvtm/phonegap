@@ -92,7 +92,7 @@ function createPromptDialog(title, message, buttons, defaultText, callback) {
         button.onclick = makeButtonCallback(idx + 1);
         if (idx === 0) {
             button.style.color = "white";
-            button.style.backgroundColor = "#464646";
+            button.style.backgroundColor = "#ffffff";
         } else {
             button.style.backgroundColor = "#cccccc";
         }

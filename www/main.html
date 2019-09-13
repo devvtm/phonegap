@@ -14,6 +14,7 @@
     <!-- Scripts -->
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
     <script type="text/javascript" src="js/utils.js"></script>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/popper.js"></script>
@@ -23,42 +24,56 @@
     <script type="text/javascript">
         $(document).ready(function ()
         {
-            window.loadMeetings();
+            if (localStorage.getItem('userId') == null)
+            {
+                window.loadLoginPage();
+            }
+            else
+            {
+                window.loadData();
+            }
         });
     </script>
 </head>
 
 <body>
 
-<button type="button" onclick="window.logout()" class="btn btn-primary size-full">Выйти</button>
+<div class="header-button-container">
+    <button type="button" onclick="window.loadData()" class="btn btn-primary size50">
+        <span id="spinner" class="spinner-border spinner-border-sm display-none" style="float: left; margin-top: 5px;" role="status" aria-hidden="true"></span>
+        Обновить
+    </button>
+    <button type="button" onclick="window.logout()" class="btn btn-info size50">Выйти</button>
+</div>
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item tab-header">
+    <li class="nav-item size50">
         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#meetings" role="tab" aria-controls="meetings" aria-selected="true">Совещания</a>
     </li>
-    <li class="nav-item tab-header">
+    <li class="nav-item size50">
         <a class="nav-link" id="profile-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Сообщения</a>
     </li>
 </ul>
+
 <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="meetings" role="tabpanel" aria-labelledby="meetings-tab">
         <!--Совещания-->
-        <div class="colors">
+        <div class="button-container">
             <button type="button" class="btn btn-success">Проведено</button>
             <button type="button" class="btn btn-warning">Перенесено</button>
             <button type="button" class="btn btn-secondary">Отменено</button>
         </div>
-
         <table class="table table-striped">
             <tbody id="meetings-table">
             </tbody>
         </table>
-
-
     </div>
     <div class="tab-pane fade" id="messages" role="tabpanel" aria-labelledby="messages-tab">
         <!--Сообщения-->
-
+        <table class="table table-striped">
+            <tbody id="messages-table">
+            </tbody>
+        </table>
     </div>
 </div>
 

@@ -51,8 +51,3 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
-
-var config = {
-    loginUrl: "http://127.0.0.1:8090/mobileapp/login",
-    meetingsUrl: "http://127.0.0.1:8090/mobileapp/loadData"
-};

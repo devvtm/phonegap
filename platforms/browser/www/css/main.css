@@ -1,18 +1,44 @@
-.tab-header {
-    width: 50%;
-    text-align: center;
-    font-weight: bold;
+.size50 {
+    width: 50% !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    border-radius: 4px !important;
 }
 
-.colors
-{
+.button-container,
+.header-button-container {
     display: flex;
 }
 
-.colors > button{
+.button-container > button {
     width: 33.33%;
     border-radius: 0px !important;
     padding: 0px !important;
     margin: 0px !important;
+}
+
+.display-none
+{
+    display: none !important;
+}
+
+.link-btn {
+    float: right;
+    margin-top: 5px;
+}
+
+#myTab a {
+    background-color: #cac9c9;
+}
+
+#myTab a.active
+{
+    border: 2px solid grey;
+    border-bottom: none;
+}
+
+.header-button-container
+{
+    margin-bottom: 5px;
 }
 

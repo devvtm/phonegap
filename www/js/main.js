@@ -4,19 +4,45 @@ function logout()
     window.location = "index.html";
 }
 
-function loadMeetings()
+function loadLoginPage()
 {
-    $.post(config.meetingsUrl,
+    window.location = "index.html";
+}
+
+function loadData()
+{
+    var $spinner = $('#spinner');
+    $spinner.removeClass('display-none');
+
+    $.post(config.dataUrl,
         {
             userId: localStorage.getItem('userId')
         },
         function (json, status)
         {
             var data = JSON.parse(json);
-            updateMeetingsContainer(data.meetings)
-            updateMessagesContainer(data.messages)
+            updateMeetingsContainer(data.meetings);
+            updateMessagesContainer(data.messages);
+            updateLinks();
+            $spinner.addClass('display-none');
         });
 }
+
+function updateLinks()
+{
+    $('a').each(function (index)
+    {
+        var href = $(this).attr('href');
+        var role = $(this).attr('role');
+
+        if (isEmpty(role))
+        {
+            $(this).attr('href', addAuthToUrl(href));
+        }
+    });
+}
+
+// MEETINGS
 
 function updateMeetingsContainer(items)
 {
@@ -25,14 +51,22 @@ function updateMeetingsContainer(items)
 
     if (items != null)
     {
-        for (var i = 0 ; i < items.length; ++i)
+        for (var i = 0; i < items.length; ++i)
         {
             var item = items[i];
-            var color = getMeetingsStatusColor(item);
-            var child = "<tr style='background-color: " + color + "'><td>" + item.content + "</td></tr>";
-            $table.append(child);
+            $table.append(buildMeetingItem(item));
         }
     }
+}
+
+function buildMeetingItem(item)
+{
+    return "<tr style='background-color: " + getMeetingsStatusColor(item) + "'><td>" + item.content + "<button type='button' class='btn btn-primary btn-sm link-btn' onclick='gotoMeeting(" + item.id + ")'>Перейти к совещанию</button></td></tr>";
+}
+
+function gotoMeeting(id)
+{
+    loadAppPage(config.meetingUrl + id);
 }
 
 function getMeetingsStatusColor(item)
@@ -43,17 +77,44 @@ function getMeetingsStatusColor(item)
     {
         switch (status)
         {
-            case 'DONE': return '#28a745';
-            case 'CANCELED': return '#6c757d';
-            case 'MOVED': return '#ffc107';
+            case 'DONE':
+                return '#28a745';
+            case 'CANCELED':
+                return '#6c757d';
+            case 'MOVED':
+                return '#ffc107';
         }
     }
 
     return '#FFFFFF';
 }
 
-function updateMessagesContainer()
+
+// MESSAGES
+
+function updateMessagesContainer(items)
 {
-    var $messages = $('#messages');
-    $messages.html('');
+    var $table = $('#messages-table');
+    $table.html('');
+
+    if (items != null)
+    {
+        for (var i = 0; i < items.length; ++i)
+        {
+            var item = items[i];
+            $table.append(buildMessageItem(item));
+        }
+    }
+}
+
+function buildMessageItem(item)
+{
+    var content = item.content;
+    content = content.split("href='app").join("href='" + window.siteUrl + "/app");
+    content = content.split('href="app').join('href="' + window.siteUrl + '/app');
+    content = content.split('_self|_blank|_parent|_top').join('_system');
+    content = content.split("target='_system'").join("");
+    content = content.split("href").join("target='_system' href");
+
+    return "<tr><td>" + content + "</td></tr>";
 }

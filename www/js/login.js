@@ -23,6 +23,8 @@ function login()
                 else
                 {
                     localStorage.setItem('userId', userId);
+                    localStorage.setItem('login', login);
+                    localStorage.setItem('password', password);
                     loadMainPage();
                 }
             });
