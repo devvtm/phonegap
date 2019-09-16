@@ -1,7 +1,31 @@
 function logout()
 {
-    localStorage.removeItem('userId');
-    window.location = "index.html";
+    $.post(config.logoutUrl,
+        {
+            userId: localStorage.getItem('userId'),
+            deviceId: localStorage.getItem('deviceId')
+        },
+        function (json, status)
+        {
+            localStorage.removeItem('userId');
+            window.location = "index.html";
+        });
+}
+
+function subscribe(deviceId, signalId)
+{
+    localStorage.setItem('deviceId', deviceId);
+    localStorage.setItem('signalId', signalId);
+
+    $.post(config.subscribeUrl,
+        {
+            userId: localStorage.getItem('userId'),
+            deviceId: deviceId,
+            signalId: signalId
+        },
+        function (json, status)
+        {
+        });
 }
 
 function loadLoginPage()
