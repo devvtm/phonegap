@@ -3,6 +3,7 @@ document.addEventListener('deviceready', function () {
     window.plugins.OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
 
     var notificationOpenedCallback = function(jsonData) {
+
     };
 
     window.plugins.OneSignal
@@ -11,16 +12,12 @@ document.addEventListener('deviceready', function () {
         .inFocusDisplaying(window.plugins.OneSignal.OSInFocusDisplayOption.Notification)
         .endInit();
 
-    window.plugins.OneSignal.setSubscription(false);
-
     window.plugins.OneSignal.addSubscriptionObserver(function (state) {
         console.log("state");
         if (!state.from.subscribed && state.to.subscribed) {
             subscribe(device.uuid, state.to.userId)
         }
     });
-
-    window.plugins.OneSignal.setSubscription(true);
 
     console.log("one signal init complete");
 }, false);

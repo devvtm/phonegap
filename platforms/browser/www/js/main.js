@@ -8,6 +8,7 @@ function logout()
         function (json, status)
         {
             localStorage.removeItem('userId');
+            window.plugins.OneSignal.setSubscription(false);
             window.location = "index.html";
         });
 }
