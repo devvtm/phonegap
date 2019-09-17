@@ -3,7 +3,7 @@ var config = {
     loginUrl: siteUrl + "/mobileapp/login",
     logoutUrl: siteUrl + "/mobileapp/logout",
     dataUrl: siteUrl + "/mobileapp/loadData",
-    subscribeUrl: siteUrl + "/mobileapp/subscribe",
+    subscribeUrl: siteUrl + "/mobileapp/subscribeDevice",
     messageReadUrl: siteUrl + "/mobileapp/messageRead",
 
     meetingUrl: siteUrl + "/app#NewMeetingChart/meetingChart=",
