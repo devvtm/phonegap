@@ -26,7 +26,7 @@
         <entry file="file://$PROJECT_DIR$/www/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="33" column="63" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
+              <caret line="33" column="1" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
               <folding>
                 <marker date="1568381866248" expanded="true" signature="1849:1867" placeholder="..." />
               </folding>
@@ -38,7 +38,7 @@
         <entry file="file://$PROJECT_DIR$/www/js/config.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.056497175">
-              <caret line="2" column="33" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -1061,12 +1061,12 @@
       <workItem from="1562232964020" duration="2495000" />
       <workItem from="1568126663474" duration="110000" />
       <workItem from="1568128248004" duration="38143000" />
-      <workItem from="1568729255271" duration="3614000" />
+      <workItem from="1568729255271" duration="3645000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44975000" />
+    <option name="totallyTimeSpent" value="45006000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="29" width="1938" height="1060" extended-state="6" />
@@ -1467,7 +1467,7 @@
     <entry file="file://$PROJECT_DIR$/www/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="63" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
+          <caret line="33" column="1" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
           <folding>
             <marker date="1568381866248" expanded="true" signature="1849:1867" placeholder="..." />
           </folding>
@@ -1477,7 +1477,7 @@
     <entry file="file://$PROJECT_DIR$/www/js/config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.056497175">
-          <caret line="2" column="33" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
       </provider>
