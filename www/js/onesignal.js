@@ -13,11 +13,10 @@ document.addEventListener('deviceready', function () {
         .endInit();
 
     window.plugins.OneSignal.addSubscriptionObserver(function (state) {
-        console.log("state");
         if (!state.from.subscribed && state.to.subscribed) {
             subscribe(device.uuid, state.to.userId)
         }
     });
 
-    console.log("one signal init complete");
+    window.plugins.OneSignal.setSubscription(true);
 }, false);
