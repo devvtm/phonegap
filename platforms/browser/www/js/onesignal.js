@@ -11,6 +11,8 @@ document.addEventListener('deviceready', function () {
         .inFocusDisplaying(window.plugins.OneSignal.OSInFocusDisplayOption.Notification)
         .endInit();
 
+    window.plugins.OneSignal.setSubscription(false);
+
     window.plugins.OneSignal.addSubscriptionObserver(function (state) {
         console.log("state");
         if (!state.from.subscribed && state.to.subscribed) {
@@ -18,7 +20,7 @@ document.addEventListener('deviceready', function () {
         }
     });
 
-    window.plugins.OneSignal.provideUserConsent(true);
+    window.plugins.OneSignal.setSubscription(true);
 
     console.log("one signal init complete");
 }, false);
