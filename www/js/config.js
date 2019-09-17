@@ -1,4 +1,6 @@
-var siteUrl = "http://192.168.0.101:8090";
+//var siteUrl = "http://192.168.0.101:8090";
+var siteUrl = "http://127.0.0.1:8090";
+
 var config = {
     loginUrl: siteUrl + "/mobileapp/login",
     logoutUrl: siteUrl + "/mobileapp/logout",
