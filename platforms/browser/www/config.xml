@@ -8,9 +8,9 @@
     </feature>
     <name>ВТМ Дорпроект</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        Сервис уведомление ВТМ дорпроект
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
+    <author email="dev.vtmproject@gmail.com" href="http://phonegap.com">
         PhoneGap Team
     </author>
     <content src="index.html" />
