@@ -50,6 +50,16 @@
         <div class="form-group">
             <input type="password" class="form-control input-lg" id="password" placeholder="Пароль">
         </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="server">Сервер</label>
+            </div>
+            <select class="custom-select" id="server">
+                <option value="VTM">ВТМ</option>
+                <option value="IKPAD">ИКПАД</option>
+                <option value="MERIDIAN">МЕРИДИАН</option>
+            </select>
+        </div>
         <button type="submit" onclick="window.login(); return false" class="btn btn-primary input-lg size-full">Войти</button>
     </form>
 </div>

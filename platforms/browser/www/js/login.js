@@ -2,14 +2,19 @@ function login()
 {
     var login = $('#login').val();
     var password = $('#password').val();
+    var server = $('#server').val();
 
     var errorVisible = isEmpty(login) || isEmpty(password);
 
-    setErrorVisible(errorVisible)
+    setErrorVisible(errorVisible);
 
     if (!errorVisible)
     {
-        $.post(config.loginUrl,
+        localStorage.setItem('server', server);
+
+        CONFIG.initConfig();
+
+        $.post(CONFIG.loginUrl,
             {
                 login: login,
                 password: password

@@ -1,6 +1,6 @@
 function logout()
 {
-    $.post(config.logoutUrl,
+    $.post(CONFIG.logoutUrl,
         {
             userId: localStorage.getItem('userId'),
             deviceId: localStorage.getItem('deviceId')
@@ -18,7 +18,7 @@ function subscribe(deviceId, signalId)
     localStorage.setItem('deviceId', deviceId);
     localStorage.setItem('signalId', signalId);
 
-    $.post(config.subscribeUrl,
+    $.post(CONFIG.subscribeUrl,
         {
             userId: localStorage.getItem('userId'),
             deviceId: deviceId,
@@ -39,7 +39,7 @@ function loadData()
     var $spinner = $('#spinner');
     $spinner.removeClass('display-none');
 
-    $.post(config.dataUrl,
+    $.post(CONFIG.dataUrl,
         {
             userId: localStorage.getItem('userId')
         },
@@ -91,7 +91,7 @@ function buildMeetingItem(item)
 
 function gotoMeeting(id)
 {
-    loadAppPage(config.meetingUrl + id);
+    loadAppPage(CONFIG.meetingUrl + id);
 }
 
 function getMeetingsStatusColor(item)
@@ -135,8 +135,8 @@ function updateMessagesContainer(items)
 function buildMessageItem(item)
 {
     var content = item.content;
-    content = content.split("href='app").join("href='" + window.siteUrl + "/app");
-    content = content.split('href="app').join('href="' + window.siteUrl + '/app');
+    content = content.split("href='app").join("href='" + window.CONFIG.siteUrl + "/app");
+    content = content.split('href="app').join('href="' + window.CONFIG.siteUrl + '/app');
     content = content.split('_self|_blank|_parent|_top').join('_system');
     content = content.split("target='_system'").join("");
     content = content.split("href").join("target='_system' href");
@@ -148,7 +148,7 @@ function buildMessageItem(item)
 
 function setMessageReaded(confirmationId)
 {
-    $.post(config.messageReadUrl,
+    $.post(CONFIG.messageReadUrl,
         {
             confirmationId: confirmationId
         },
