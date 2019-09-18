@@ -15,18 +15,17 @@ var CONFIG = {
         {
             case "VTM":
             {
-                //this.siteUrl = "http://192.168.0.101:8090";
-                this.siteUrl = "http://127.0.0.1:8090";
+                this.siteUrl = "http://proj.vtm-dorproekt.ru:9443/";
                 break;
             }
             case "IKPAD":
             {
-                this.siteUrl = "http://192.168.0.101:8090";
+                this.siteUrl = "http://94.141.62.220:8181/";
                 break;
             }
             case "MERIDIAN":
             {
-                this.siteUrl = "http://192.168.0.101:8090";
+                this.siteUrl = "http://217.173.79.42:8181/";
                 break;
             }
         }
