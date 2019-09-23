@@ -15,7 +15,7 @@ var CONFIG = {
         {
             case "VTM":
             {
-                this.siteUrl = "http://proj.vtm-dorproekt.ru:9443/";
+                this.siteUrl = "https://proj.vtm-dorproekt.ru:9443/";
                 break;
             }
             case "IKPAD":

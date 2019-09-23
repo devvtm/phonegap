@@ -22,63 +22,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="config.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="config.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.3">
-              <caret line="12" column="51" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/js/login.js">
-          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/js/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="9" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
-              <folding>
-                <marker date="1568799642128" expanded="true" signature="1910:1928" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/main.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.0">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/platforms/browser/config.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6841155">
-              <caret line="24" column="75" selection-start-line="24" selection-start-column="60" selection-end-line="24" selection-end-column="60" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/platforms/browser/www/config.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.966666">
-              <caret line="22" column="55" selection-start-line="22" selection-start-column="55" selection-end-line="22" selection-end-column="55" />
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -88,7 +36,37 @@
         <entry file="file://$PROJECT_DIR$/www/js/config.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <caret line="18" column="51" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/platforms/browser/www/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.3333333">
+              <caret line="6" column="58" selection-start-line="6" selection-start-column="125" selection-end-line="8" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.8333335">
+              <caret line="7" column="73" selection-start-line="7" selection-start-column="73" selection-end-line="7" selection-end-column="73" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/js/login.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="19" column="50" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -125,17 +103,18 @@
         <option value="$PROJECT_DIR$/www/js/index.js" />
         <option value="$PROJECT_DIR$/platforms/browser/www/cordova.js" />
         <option value="$PROJECT_DIR$/www/js/onesignal.js" />
-        <option value="$PROJECT_DIR$/www/index.html" />
-        <option value="$PROJECT_DIR$/www/js/login.js" />
         <option value="$PROJECT_DIR$/platforms/browser/www/js/login.js" />
         <option value="$PROJECT_DIR$/platforms/browser/www/js/main.js" />
         <option value="$PROJECT_DIR$/www/js/main.js" />
         <option value="$PROJECT_DIR$/platforms/browser/www/js/config.js" />
         <option value="$PROJECT_DIR$/www/main.html" />
-        <option value="$PROJECT_DIR$/www/js/config.js" />
-        <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/platforms/browser/www/config.xml" />
+        <option value="$PROJECT_DIR$/platforms/browser/www/index.html" />
         <option value="$PROJECT_DIR$/platforms/browser/config.xml" />
+        <option value="$PROJECT_DIR$/www/index.html" />
+        <option value="$PROJECT_DIR$/www/js/config.js" />
+        <option value="$PROJECT_DIR$/www/js/login.js" />
+        <option value="$PROJECT_DIR$/config.xml" />
       </list>
     </option>
   </component>
@@ -975,12 +954,12 @@
       <workItem from="1568126663474" duration="110000" />
       <workItem from="1568128248004" duration="38143000" />
       <workItem from="1568729255271" duration="8630000" />
-      <workItem from="1568796095339" duration="7607000" />
+      <workItem from="1568796095339" duration="10079000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57598000" />
+    <option name="totallyTimeSpent" value="60070000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="29" width="1938" height="1060" extended-state="6" />
@@ -1304,18 +1283,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/index.html">
+    <entry file="file://$PROJECT_DIR$/www/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2982457">
-          <caret line="54" column="59" selection-start-line="54" selection-start-column="59" selection-end-line="54" selection-end-column="59" />
+        <state vertical-scroll-proportion="-10.0">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/login.js">
+    <entry file="file://$PROJECT_DIR$/platforms/browser/res/icon/android/icon-36-ldpi.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platforms/browser/www/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="28" />
+        <state vertical-scroll-proportion="-13.466666">
+          <caret line="25" column="55" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="55" />
           <folding />
         </state>
       </provider>
@@ -1330,47 +1314,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/main.html">
+    <entry file="file://$PROJECT_DIR$/platforms/browser/www/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.0">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/platforms/browser/res/icon/android/icon-36-ldpi.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/platforms/browser/www/config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.966666">
-          <caret line="22" column="55" selection-start-line="22" selection-start-column="55" selection-end-line="22" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.3">
-          <caret line="12" column="51" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
+        <state vertical-scroll-proportion="-3.3333333">
+          <caret line="6" column="58" selection-start-line="6" selection-start-column="125" selection-end-line="8" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/platforms/browser/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6841155">
-          <caret line="24" column="75" selection-start-line="24" selection-start-column="60" selection-end-line="24" selection-end-column="60" />
+        <state vertical-scroll-proportion="0.15162455">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.8333335">
+          <caret line="7" column="73" selection-start-line="7" selection-start-column="73" selection-end-line="7" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="50" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="51" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
