@@ -25,8 +25,8 @@
       <file leaf-file-name="config.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.36101082">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -36,7 +36,7 @@
         <entry file="file://$PROJECT_DIR$/www/js/config.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="51" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+              <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -66,7 +66,7 @@
         <entry file="file://$PROJECT_DIR$/www/js/login.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="50" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+              <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -954,12 +954,12 @@
       <workItem from="1568126663474" duration="110000" />
       <workItem from="1568128248004" duration="38143000" />
       <workItem from="1568729255271" duration="8630000" />
-      <workItem from="1568796095339" duration="10079000" />
+      <workItem from="1568796095339" duration="10101000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60070000" />
+    <option name="totallyTimeSpent" value="60092000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="29" width="1938" height="1060" extended-state="6" />
@@ -1341,7 +1341,7 @@
     <entry file="file://$PROJECT_DIR$/www/js/login.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="50" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+          <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
           <folding />
         </state>
       </provider>
@@ -1349,15 +1349,15 @@
     <entry file="file://$PROJECT_DIR$/www/js/config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="51" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.36101082">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding />
         </state>
       </provider>
