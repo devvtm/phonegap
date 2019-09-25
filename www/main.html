@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *"/>
     <link rel="stylesheet" type="text/css" href="css/index.css"/>
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
-    <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap_3.3.7.css">
 
     <!-- Scripts -->
     <script type="text/javascript" src="cordova.js"></script>
@@ -35,50 +35,79 @@
             {
                 window.loadData();
             }
+
+            window.buildLeftMenu();
         });
     </script>
 </head>
 
 <body>
 
-<div class="header-button-container">
-    <button type="button" onclick="window.loadData()" class="btn btn-primary size50">
-        <span id="spinner" class="spinner-border spinner-border-sm display-none" style="float: left; margin-top: 5px;" role="status" aria-hidden="true"></span>
-        Обновить
-    </button>
-    <button type="button" onclick="window.logout()" class="btn btn-info size50">Выйти</button>
-</div>
+<div id="wrapper">
+    <div class="overlay"></div>
 
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item size50">
-        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#meetings" role="tab" aria-controls="meetings" aria-selected="true">Совещания</a>
-    </li>
-    <li class="nav-item size50">
-        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Сообщения</a>
-    </li>
-</ul>
+    <!-- Sidebar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+        <ul class="nav sidebar-nav menu" role="tablist">
+            <li class="sidebar-brand">
+                <a href="#">
+                    Меню
+                </a>
+            </li>
+            <li>
+                <a class="nav-link active" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="true">Сообщения</a>
+            </li>
+            <li>
+                <a class="nav-link" id="meetings-tab" data-toggle="tab" href="#meetings" role="tab" aria-controls="meetings" aria-selected="false">Совещания</a>
+            </li>
+            <li>
+                <a href="#" onclick="window.loadData(); return false;">Обновить страницу</a>
+            </li>
+            <li>
+                <a href="#" onclick="window.logout(); return false;">Выйти</a>
+            </li>
+        </ul>
+    </nav>
+    <!-- /#sidebar-wrapper -->
 
-<div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="meetings" role="tabpanel" aria-labelledby="meetings-tab">
-        <!--Совещания-->
-        <div class="button-container">
-            <button type="button" class="btn btn-success">Проведено</button>
-            <button type="button" class="btn btn-warning">Перенесено</button>
-            <button type="button" class="btn btn-secondary">Отменено</button>
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+            <span class="hamb-top"></span>
+            <span class="hamb-middle"></span>
+            <span class="hamb-bottom"></span>
+        </button>
+
+        <div class="top-header">
+            ВТМ ДорПроект
         </div>
-        <table class="table table-striped">
-            <tbody id="meetings-table">
-            </tbody>
-        </table>
+
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+                <!--Сообщения-->
+                <table class="table table-striped">
+                    <tbody id="messages-table">
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="meetings" role="tabpanel" aria-labelledby="meetings-tab">
+                <!--Совещания-->
+                <div class="button-container">
+                    <button type="button" class="btn btn-success">Проведено</button>
+                    <button type="button" class="btn btn-warning">Перенесено</button>
+                    <button type="button" class="btn btn-secondary">Отменено</button>
+                </div>
+                <table class="table table-striped">
+                    <tbody id="meetings-table">
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-    <div class="tab-pane fade" id="messages" role="tabpanel" aria-labelledby="messages-tab">
-        <!--Сообщения-->
-        <table class="table table-striped">
-            <tbody id="messages-table">
-            </tbody>
-        </table>
-    </div>
+    <!-- /#page-content-wrapper -->
+
 </div>
+<!-- /#wrapper -->
 
 </body>
 </html>
