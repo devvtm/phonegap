@@ -41,7 +41,7 @@ html {
     margin-left: -220px;
     overflow-y: auto;
     overflow-x: hidden;
-    background: #1a1a1a;
+    background: #86805e;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -58,7 +58,6 @@ html {
 
 #page-content-wrapper {
     width: 100%;
-    padding-top: 70px;
 }
 
 #wrapper.toggled #page-content-wrapper {
@@ -101,7 +100,7 @@ html {
 
 .sidebar-nav li:first-child a {
     color: #fff;
-    background-color: #1a1a1a;
+    background-color: #7d764b;
 }
 
 .sidebar-nav li:nth-child(2):before {
@@ -183,13 +182,12 @@ html {
 
 /* Hamburger-Cross */
 .hamburger {
-    position: fixed;
-    top: 20px;
+    position: relative;
+    margin-left: 15px;
     z-index: 999;
-    display: block;
+    display: inline-flex;
     width: 32px;
     height: 32px;
-    margin-left: 15px;
     background: transparent;
     border: none;
 }
@@ -366,11 +364,64 @@ html {
 }
 
 .top-header {
-    position: fixed;
-    top: 22px;
-    left: 100px;
+    position: relative;
+    vertical-align: middle;
+    margin-left: 30px;
+    margin-top: 10px;
     font-size: 16pt;
     font-weight: bold;
     color: #86805e;
+    display: inline-flex;
 }
+
+.top-header img {
+    width: 40px;
+    height: 40px;
+}
+
+.top-header-logo {
+    padding-top: 6px;
+    padding-left: 10px;
+}
+
+.page-header-container {
+    margin: 10px;
+    display: inline-block;
+}
+
+.settings-container {
+    margin: 20px;
+}
+
+.save-settings-btn
+{
+    width: 100%;
+    margin-top: 20px;
+    height: 40px;
+}
+
+.settings-radio
+{
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+}
+
+.modal-backdrop
+{
+    opacity: 0.5 !important;
+}
+
+.modal-dialog-centered
+{
+    margin-top: 200px !important;
+}
+
+.success-close-btn
+{
+    float: right;
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
 

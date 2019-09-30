@@ -179,16 +179,17 @@ function buildLeftMenu()
     {
         if (isClosed == true)
         {
+            isClosed = false;
             overlay.hide();
             trigger.removeClass('is-open');
             trigger.addClass('is-closed');
-            isClosed = false;
+
         } else
         {
+            isClosed = true;
             overlay.show();
             trigger.removeClass('is-closed');
             trigger.addClass('is-open');
-            isClosed = true;
         }
     }
 
@@ -196,4 +197,43 @@ function buildLeftMenu()
     {
         $('#wrapper').toggleClass('toggled');
     });
+}
+
+function applySettings()
+{
+    $.post(CONFIG.getSettingsUrl,
+        {
+            userId: localStorage.getItem('userId')
+        },
+        function (json, status)
+        {
+            var settings = JSON.parse(json);
+
+            if (settings.allNotificationDisabled)
+            {
+                $('#all-notification-choose').bootstrapToggle('on')
+            }
+
+            if (settings.meetingNotificationDisabled)
+            {
+                $('#meeting-notification-choose').bootstrapToggle('on')
+            }
+        });
+}
+
+function changeSettings()
+{
+    var meetingVal = $('#meeting-notification-choose').prop('checked');
+    var allVal = $('#all-notification-choose').prop('checked');
+
+    $.post(CONFIG.changeSettingsUrl,
+        {
+            userId: localStorage.getItem('userId'),
+            meetingNotificationDisabled: meetingVal,
+            allNotificationDisabled: allVal
+        },
+        function (json, status)
+        {
+            $('#success-modal').modal('show');
+        });
 }

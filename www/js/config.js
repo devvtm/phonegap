@@ -6,6 +6,8 @@ var CONFIG = {
     subscribeUrl: null,
     messageReadUrl: null,
     meetingUrl: null,
+    getSettingsUrl: null,
+    changeSettingsUrl: null,
 
     initConfig: function()
     {
@@ -15,7 +17,8 @@ var CONFIG = {
         {
             case "VTM":
             {
-                this.siteUrl = "https://proj.vtm-dorproekt.ru:9443/";
+                //this.siteUrl = "https://proj.vtm-dorproekt.ru:9443/";
+                this.siteUrl = "http://192.168.0.105:8090/";
                 break;
             }
             case "IKPAD":
@@ -36,5 +39,7 @@ var CONFIG = {
         this.subscribeUrl = this.siteUrl + "/mobileapp/subscribeDevice";
         this.messageReadUrl = this.siteUrl + "/mobileapp/messageRead";
         this.meetingUrl = this.siteUrl + "/app#NewMeetingChart/meetingChart=";
+        this.getSettingsUrl = this.siteUrl + "/mobileapp/getSettings";
+        this.changeSettingsUrl = this.siteUrl + "/mobileapp/changeSettings";
     }
 };
