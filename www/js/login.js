@@ -30,7 +30,7 @@ function login()
                     localStorage.setItem('userId', userId);
                     localStorage.setItem('login', login);
                     localStorage.setItem('password', password);
-                    loadMainPage();
+                    CONFIG.loadPage("main");
                 }
             });
     }
@@ -46,9 +46,4 @@ function setErrorVisible(show)
     {
         $('#error-alert').addClass('invisible');
     }
-}
-
-function loadMainPage()
-{
-    window.location = "main.html";
 }

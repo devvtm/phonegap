@@ -9,8 +9,10 @@
     <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *"/>
     <link rel="stylesheet" type="text/css" href="css/index.css"/>
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="css/chat.css"/>
     <link rel="stylesheet" type="text/css" href="css/bootstrap_3.3.7.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap-toggle.css">
+    <link rel="stylesheet" type="text/css" href="css/fontawesome.css">
 
     <!-- Scripts -->
     <script type="text/javascript" src="cordova.js"></script>
@@ -21,6 +23,9 @@
     <script type="text/javascript" src="js/popper.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/chat.js"></script>
+    <script type="text/javascript" src="js/chat_layout.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
     <script type="text/javascript" src="js/onesignal.js"></script>
     <script type="text/javascript" src="js/bootstrap-toggle.js"></script>
 
@@ -32,7 +37,7 @@
 
             if (localStorage.getItem('userId') == null)
             {
-                window.loadLoginPage();
+                CONFIG.loadPage("index");
             }
             else
             {
@@ -52,7 +57,7 @@
 
     <!-- Sidebar -->
     <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-        <ul class="nav sidebar-nav menu" role="tablist">
+        <ul id="menu" class="nav sidebar-nav menu" role="tablist">
             <li class="sidebar-brand">
                 <a href="#">
                     Меню
@@ -60,6 +65,9 @@
             </li>
             <li>
                 <a class="nav-link active" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="true">Сообщения</a>
+            </li>
+            <li>
+                <a class="nav-link" id="chat-tab" data-toggle="tab" href="#chat" role="tab" aria-controls="chat" aria-selected="false">Чат с сотрудником</a>
             </li>
             <li>
                 <a class="nav-link" id="meetings-tab" data-toggle="tab" href="#meetings" role="tab" aria-controls="meetings" aria-selected="false">Совещания</a>
@@ -95,6 +103,48 @@
                     <tbody id="messages-table">
                     </tbody>
                 </table>
+            </div>
+            <div class="tab-pane fade" id="chat" role="tabpanel" aria-labelledby="chat-tab">
+                <!--Чат-->
+                <div id="frame">
+                    <div class="content">
+                        <div class="contact-profile" id="resource-name">
+                            Harvey Specter
+                        </div>
+                        <div class="messages">
+                            <ul id="chat-container">
+                                <li class="sent">
+                                    <p>How the hell am I supposed to get a jury to believe you when I am not even sure that I do?!</p>
+                                </li>
+                                <li class="replies">
+                                    <p>When you're backed against the wall, break the god damn thing down.</p>
+                                </li>
+                                <li class="replies">
+                                    <p>Excuses don't win championships.</p>
+                                </li>
+                                <li class="sent">
+                                    <p>Oh y e sdfsdfsdfdfah, did Michael Jordan tell you that?</p>
+                                </li>
+                                <li class="replies">
+                                    <p>No, I told him that.</p>
+                                </li>
+                                <li class="replies">
+                                    <p>What are your choices when someone puts a gun to your head?</p>
+                                </li>
+                                <li class="sent">
+                                    <p>What are you talking about? You do what they say or they shoot you.</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="message-input">
+                            <div class="wrap">
+                                <input type="text" placeholder="Введите сообщение"/>
+                                <button class="button attachment-button"></button>
+                                <button class="submit create-message-button"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="tab-pane fade" id="meetings" role="tabpanel" aria-labelledby="meetings-tab">
                 <!--Совещания-->

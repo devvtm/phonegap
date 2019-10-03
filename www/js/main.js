@@ -29,11 +29,6 @@ function subscribe(deviceId, signalId)
         });
 }
 
-function loadLoginPage()
-{
-    window.location = "index.html";
-}
-
 function loadData()
 {
     var $spinner = $('#spinner');
@@ -141,12 +136,13 @@ function buildMessageItem(item)
     content = content.split("target='_system'").join("");
     content = content.split("href").join("target='_system' href");
 
-    content += "<button type='button' class='btn btn-primary btn-sm link-btn' onclick='setMessageReaded(" + item.confirmationId + ")'>Прочитано</button>";
+    content += "<button type='button' class='btn btn-success btn-sm link-btn margin-5' onclick='setMessageRead(" + item.confirmationId + ")'>Прочитано</button>";
+    content += "<button type='button' class='btn btn-primary btn-sm link-btn margin-5' onclick='loadChat(" + item.authorId + ")'>Перейти к чату</button>";
 
     return "<tr><td>" + content + "</td></tr>";
 }
 
-function setMessageReaded(confirmationId)
+function setMessageRead(confirmationId)
 {
     $.post(CONFIG.messageReadUrl,
         {
@@ -155,85 +151,5 @@ function setMessageReaded(confirmationId)
         function (json, status)
         {
             loadData();
-        });
-}
-
-function buildLeftMenu()
-{
-    var trigger = $('.hamburger'),
-        overlay = $('.overlay'),
-        menuItem = $('.menu a'),
-        isClosed = false;
-
-    trigger.click(function ()
-    {
-        hamburger_cross();
-    });
-
-    menuItem.click(function ()
-    {
-        trigger.click();
-    });
-
-    function hamburger_cross()
-    {
-        if (isClosed == true)
-        {
-            isClosed = false;
-            overlay.hide();
-            trigger.removeClass('is-open');
-            trigger.addClass('is-closed');
-
-        } else
-        {
-            isClosed = true;
-            overlay.show();
-            trigger.removeClass('is-closed');
-            trigger.addClass('is-open');
-        }
-    }
-
-    $('[data-toggle="offcanvas"]').click(function ()
-    {
-        $('#wrapper').toggleClass('toggled');
-    });
-}
-
-function applySettings()
-{
-    $.post(CONFIG.getSettingsUrl,
-        {
-            userId: localStorage.getItem('userId')
-        },
-        function (json, status)
-        {
-            var settings = JSON.parse(json);
-
-            if (settings.allNotificationDisabled)
-            {
-                $('#all-notification-choose').bootstrapToggle('on')
-            }
-
-            if (settings.meetingNotificationDisabled)
-            {
-                $('#meeting-notification-choose').bootstrapToggle('on')
-            }
-        });
-}
-
-function changeSettings()
-{
-    var meetingVal = $('#meeting-notification-choose').prop('checked');
-    var allVal = $('#all-notification-choose').prop('checked');
-
-    $.post(CONFIG.changeSettingsUrl,
-        {
-            userId: localStorage.getItem('userId'),
-            meetingNotificationDisabled: meetingVal,
-            allNotificationDisabled: allVal
-        },
-        function (json, status)
-        {
-            $('#success-modal').modal('show');
         });
 }

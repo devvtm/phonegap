@@ -12,7 +12,7 @@ function addAuthToUrl(url)
 {
     if (url.indexOf('&p=') == -1)
     {
-        url = url + "?l=" + localStorage.getItem('login') + "&p=" + localStorage.getItem('password');
+        url = url + "/?l=" + localStorage.getItem('login') + "&p=" + localStorage.getItem('password');
     }
 
     return url;

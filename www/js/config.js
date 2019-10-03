@@ -1,4 +1,6 @@
 var CONFIG = {
+
+    // MobileAppController
     siteUrl : null,
     loginUrl: null,
     logoutUrl: null,
@@ -9,6 +11,11 @@ var CONFIG = {
     getSettingsUrl: null,
     changeSettingsUrl: null,
 
+    // MobileAppMessageController
+    getChatUrl: null,
+    createMessageUrl: null,
+    getResourcesUrl: null,
+
     initConfig: function()
     {
         var server = localStorage.getItem('server');
@@ -17,7 +24,8 @@ var CONFIG = {
         {
             case "VTM":
             {
-                this.siteUrl = "https://proj.vtm-dorproekt.ru:9443/";
+                //this.siteUrl = "https://proj.vtm-dorproekt.ru:9443/";
+                this.siteUrl = "http://192.168.0.106:8090/";
                 break;
             }
             case "IKPAD":
@@ -40,5 +48,19 @@ var CONFIG = {
         this.meetingUrl = this.siteUrl + "/app#NewMeetingChart/meetingChart=";
         this.getSettingsUrl = this.siteUrl + "/mobileapp/getSettings";
         this.changeSettingsUrl = this.siteUrl + "/mobileapp/changeSettings";
+
+        this.getChatUrl = this.siteUrl + "/mobileappmessage/getChat";
+        this.createMessageUrl = this.siteUrl + "/mobileappmessage/createMessage";
+        this.getResourcesUrl = this.siteUrl + "/mobileappmessage/getResources";
+    },
+
+    loadPage: function(page)
+    {
+        window.location = page + ".html";
+    },
+
+    loadPage: function(page, param, value)
+    {
+        window.location = page + ".html?" + param + "=" + value;
     }
 };
