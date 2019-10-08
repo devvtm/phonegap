@@ -26,7 +26,7 @@ table {
     border-spacing: 0
 }
 
-#frame {
+.frame {
     width: 100%;
     min-width: 360px;
     max-width: 1000px;
@@ -36,7 +36,7 @@ table {
     background: #E6EAEA;
 }
 
-#frame #sidepanel {
+.frame #sidepanel {
     float: left;
     min-width: 280px;
     width: 100%;
@@ -47,21 +47,21 @@ table {
     position: relative;
 }
 
-#frame #sidepanel #profile {
+.frame #sidepanel #profile {
     width: 80%;
     margin: 25px auto;
 }
 
-#frame #sidepanel #profile.expanded .wrap {
+.frame #sidepanel #profile.expanded .wrap {
     height: 210px;
     line-height: initial;
 }
 
-#frame #sidepanel #profile.expanded .wrap p {
+.frame #sidepanel #profile.expanded .wrap p {
     margin-top: 20px;
 }
 
-#frame #sidepanel #profile.expanded .wrap i.expand-button {
+.frame #sidepanel #profile.expanded .wrap i.expand-button {
     -moz-transform: scaleY(-1);
     -o-transform: scaleY(-1);
     -webkit-transform: scaleY(-1);
@@ -70,7 +70,7 @@ table {
     -ms-filter: "FlipH";
 }
 
-#frame #sidepanel #profile .wrap {
+.frame #sidepanel #profile .wrap {
     height: 60px;
     line-height: 60px;
     overflow: hidden;
@@ -80,7 +80,7 @@ table {
     transition: 0.3s height ease;
 }
 
-#frame #sidepanel #profile .wrap img {
+.frame #sidepanel #profile .wrap img {
     width: 50px;
     border-radius: 50%;
     padding: 3px;
@@ -94,28 +94,28 @@ table {
     transition: 0.3s border ease;
 }
 
-#frame #sidepanel #profile .wrap img.online {
+.frame #sidepanel #profile .wrap img.online {
     border: 2px solid #2ecc71;
 }
 
-#frame #sidepanel #profile .wrap img.away {
+.frame #sidepanel #profile .wrap img.away {
     border: 2px solid #f1c40f;
 }
 
-#frame #sidepanel #profile .wrap img.busy {
+.frame #sidepanel #profile .wrap img.busy {
     border: 2px solid #e74c3c;
 }
 
-#frame #sidepanel #profile .wrap img.offline {
+.frame #sidepanel #profile .wrap img.offline {
     border: 2px solid #95a5a6;
 }
 
-#frame #sidepanel #profile .wrap p {
+.frame #sidepanel #profile .wrap p {
     float: left;
     margin-left: 15px;
 }
 
-#frame #sidepanel #profile .wrap i.expand-button {
+.frame #sidepanel #profile .wrap i.expand-button {
     float: right;
     margin-top: 23px;
     font-size: 0.8em;
@@ -123,7 +123,7 @@ table {
     color: #435f7a;
 }
 
-#frame #sidepanel #profile .wrap #status-options {
+.frame #sidepanel #profile .wrap #status-options {
     position: absolute;
     opacity: 0;
     visibility: hidden;
@@ -139,13 +139,13 @@ table {
     transition: 0.3s all ease;
 }
 
-#frame #sidepanel #profile .wrap #status-options.active {
+.frame #sidepanel #profile .wrap #status-options.active {
     opacity: 1;
     visibility: visible;
     margin: 75px 0 0 0;
 }
 
-#frame #sidepanel #profile .wrap #status-options:before {
+.frame #sidepanel #profile .wrap #status-options:before {
     content: '';
     position: absolute;
     width: 0;
@@ -156,22 +156,22 @@ table {
     margin: -8px 0 0 24px;
 }
 
-#frame #sidepanel #profile .wrap #status-options ul {
+.frame #sidepanel #profile .wrap #status-options ul {
     overflow: hidden;
     border-radius: 6px;
 }
 
-#frame #sidepanel #profile .wrap #status-options ul li {
+.frame #sidepanel #profile .wrap #status-options ul li {
     padding: 15px 0 30px 18px;
     display: block;
     cursor: pointer;
 }
 
-#frame #sidepanel #profile .wrap #status-options ul li:hover {
+.frame #sidepanel #profile .wrap #status-options ul li:hover {
     background: #496886;
 }
 
-#frame #sidepanel #profile .wrap #status-options ul li span.status-circle {
+.frame #sidepanel #profile .wrap #status-options ul li span.status-circle {
     position: absolute;
     width: 10px;
     height: 10px;
@@ -179,7 +179,7 @@ table {
     margin: 5px 0 0 0;
 }
 
-#frame #sidepanel #profile .wrap #status-options ul li span.status-circle:before {
+.frame #sidepanel #profile .wrap #status-options ul li span.status-circle:before {
     content: '';
     position: absolute;
     width: 14px;
@@ -190,56 +190,56 @@ table {
     z-index: 0;
 }
 
-#frame #sidepanel #profile .wrap #status-options ul li p {
+.frame #sidepanel #profile .wrap #status-options ul li p {
     padding-left: 12px;
 }
 
-#frame #sidepanel #profile .wrap #status-options ul li#status-online span.status-circle {
+.frame #sidepanel #profile .wrap #status-options ul li#status-online span.status-circle {
     background: #2ecc71;
 }
 
-#frame #sidepanel #profile .wrap #status-options ul li#status-online.active span.status-circle:before {
+.frame #sidepanel #profile .wrap #status-options ul li#status-online.active span.status-circle:before {
     border: 1px solid #2ecc71;
 }
 
-#frame #sidepanel #profile .wrap #status-options ul li#status-away span.status-circle {
+.frame #sidepanel #profile .wrap #status-options ul li#status-away span.status-circle {
     background: #f1c40f;
 }
 
-#frame #sidepanel #profile .wrap #status-options ul li#status-away.active span.status-circle:before {
+.frame #sidepanel #profile .wrap #status-options ul li#status-away.active span.status-circle:before {
     border: 1px solid #f1c40f;
 }
 
-#frame #sidepanel #profile .wrap #status-options ul li#status-busy span.status-circle {
+.frame #sidepanel #profile .wrap #status-options ul li#status-busy span.status-circle {
     background: #e74c3c;
 }
 
-#frame #sidepanel #profile .wrap #status-options ul li#status-busy.active span.status-circle:before {
+.frame #sidepanel #profile .wrap #status-options ul li#status-busy.active span.status-circle:before {
     border: 1px solid #e74c3c;
 }
 
-#frame #sidepanel #profile .wrap #status-options ul li#status-offline span.status-circle {
+.frame #sidepanel #profile .wrap #status-options ul li#status-offline span.status-circle {
     background: #95a5a6;
 }
 
-#frame #sidepanel #profile .wrap #status-options ul li#status-offline.active span.status-circle:before {
+.frame #sidepanel #profile .wrap #status-options ul li#status-offline.active span.status-circle:before {
     border: 1px solid #95a5a6;
 }
 
-#frame #sidepanel #profile .wrap #expanded {
+.frame #sidepanel #profile .wrap #expanded {
     padding: 100px 0 0 0;
     display: block;
     line-height: initial !important;
 }
 
-#frame #sidepanel #profile .wrap #expanded label {
+.frame #sidepanel #profile .wrap #expanded label {
     float: left;
     clear: both;
     margin: 0 8px 5px 0;
     padding: 5px 0;
 }
 
-#frame #sidepanel #profile .wrap #expanded input {
+.frame #sidepanel #profile .wrap #expanded input {
     border: none;
     margin-bottom: 6px;
     background: white;
@@ -249,98 +249,104 @@ table {
     width: calc(100% - 43px);
 }
 
-#frame #sidepanel #profile .wrap #expanded input:focus {
+.frame #sidepanel #profile .wrap #expanded input:focus {
     outline: none;
     background: #435f7a;
 }
 
-#frame #sidepanel #search {
+.frame #sidepanel #search {
     border-top: 1px solid white;
     border-bottom: 1px solid white;
     font-weight: 300;
+    display: flex;
 }
 
-#frame #sidepanel #search label {
-    position: absolute;
-    margin: 10px 0 0 20px;
+.frame #sidepanel #search i {
+    width: 10%;
+    text-align: center;
+    background: #938d63;
+    padding-top: 13px;
+    border-right: 1px solid #7d764b;
 }
 
-#frame #sidepanel #search input {
+.frame #sidepanel #search input {
     font-family: "proxima-nova", "Source Sans Pro", sans-serif;
-    padding: 10px 0 10px 46px;
-    width: 100%;
+    padding: 10px 0 10px 25px;
+    width: 80%;
     border: none;
     background: #b9b387;
     color: black;
     outline: none;
 }
 
-#frame #sidepanel #search input:focus {
+.frame #sidepanel #search input:focus {
     outline: auto;
 }
 
-#frame #sidepanel #search input::-webkit-input-placeholder {
+.frame #sidepanel #search input::-webkit-input-placeholder {
     color: black;
 }
 
-#frame #sidepanel #search input::-moz-placeholder {
+.frame #sidepanel #search input::-moz-placeholder {
     color: black;
 }
 
-#frame #sidepanel #search input:-ms-input-placeholder {
+.frame #sidepanel #search input:-ms-input-placeholder {
     color: black;
 }
 
-#frame #sidepanel #search input:-moz-placeholder {
+.frame #sidepanel #search input:-moz-placeholder {
     color: black;
 }
 
-#frame #sidepanel #contacts {
+.frame #sidepanel #contacts {
     height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
 }
 
-#frame #sidepanel #contacts.expanded {
+.frame #sidepanel #contacts.expanded {
     height: 100%;
 }
 
-#frame #sidepanel #contacts::-webkit-scrollbar {
+.frame #sidepanel #contacts::-webkit-scrollbar {
     width: 8px;
     background: #b7b182;
 }
 
-#frame #sidepanel #contacts::-webkit-scrollbar-thumb {
+.frame #sidepanel #contacts::-webkit-scrollbar-thumb {
     background-color: #6b6548;
 }
 
-#frame #sidepanel #contacts ul li.contact {
+.frame #sidepanel #contacts ul li.contact {
     position: relative;
     padding: 10px 0 15px 0;
     font-size: 0.9em;
     cursor: pointer;
     border-bottom: 1px solid #86805e;
+
 }
 
-#frame #sidepanel #contacts ul li.contact:hover {
+.frame #sidepanel #contacts ul li.contact:hover {
     /*background: #86805e;*/
 }
 
-#frame #sidepanel #contacts ul li.contact.active {
+.frame #sidepanel #contacts ul li.contact.active {
     background: #86805e;
 }
 
-#frame #sidepanel #contacts ul li.contact.active span.contact-status {
+.frame #sidepanel #contacts ul li.contact.active span.contact-status {
     /*border: 2px solid #86805e !important;*/
 }
 
-#frame #sidepanel #contacts ul li.contact .wrap {
+.frame #sidepanel #contacts ul li.contact .wrap {
     width: 88%;
     margin: 0 auto;
     position: relative;
+    display: flex;
 }
 
-#frame #sidepanel #contacts ul li.contact .wrap span {
+.frame #sidepanel #contacts ul li.contact .wrap span {
     position: absolute;
     left: 0;
     margin: -2px 0 0 -2px;
@@ -351,34 +357,34 @@ table {
     background: #95a5a6;
 }
 
-#frame #sidepanel #contacts ul li.contact .wrap span.online {
+.frame #sidepanel #contacts ul li.contact .wrap span.online {
     background: #2ecc71;
 }
 
-#frame #sidepanel #contacts ul li.contact .wrap span.away {
+.frame #sidepanel #contacts ul li.contact .wrap span.away {
     background: #f1c40f;
 }
 
-#frame #sidepanel #contacts ul li.contact .wrap span.busy {
+.frame #sidepanel #contacts ul li.contact .wrap span.busy {
     background: #e74c3c;
 }
 
-#frame #sidepanel #contacts ul li.contact .wrap img {
+.frame #sidepanel #contacts ul li.contact .wrap img {
     width: 50px;
     border-radius: 50%;
     float: left;
     margin-right: 10px;
 }
 
-#frame #sidepanel #contacts ul li.contact .wrap .meta {
+.frame #sidepanel #contacts ul li.contact .wrap .meta {
     padding: 5px 0 0 0;
 }
 
-#frame #sidepanel #contacts ul li.contact .wrap .meta .name {
+.frame #sidepanel #contacts ul li.contact .wrap .meta .name {
     font-weight: 600;
 }
 
-#frame #sidepanel #contacts ul li.contact .wrap .meta .preview {
+.frame #sidepanel #contacts ul li.contact .wrap .meta .preview {
     margin: 5px 0 0 0;
     padding: 0 0 1px;
     font-weight: 400;
@@ -391,7 +397,7 @@ table {
     transition: 1s all ease;
 }
 
-#frame #sidepanel #contacts ul li.contact .wrap .meta .preview span {
+.frame #sidepanel #contacts ul li.contact .wrap .meta .preview span {
     position: initial;
     border-radius: initial;
     background: none;
@@ -401,13 +407,13 @@ table {
     opacity: .5;
 }
 
-#frame #sidepanel #bottom-bar {
+.frame #sidepanel #bottom-bar {
     position: absolute;
     width: 100%;
     bottom: 0;
 }
 
-#frame #sidepanel #bottom-bar button {
+.frame #sidepanel #bottom-bar button {
     float: left;
     border: none;
     width: 50%;
@@ -419,24 +425,24 @@ table {
     font-family: "proxima-nova", "Source Sans Pro", sans-serif;
 }
 
-#frame #sidepanel #bottom-bar button:focus {
+.frame #sidepanel #bottom-bar button:focus {
     outline: none;
 }
 
-#frame #sidepanel #bottom-bar button:nth-child(1) {
+.frame #sidepanel #bottom-bar button:nth-child(1) {
     border-right: 1px solid #2c3e50;
 }
 
-#frame #sidepanel #bottom-bar button:hover {
+.frame #sidepanel #bottom-bar button:hover {
     background: #435f7a;
 }
 
-#frame #sidepanel #bottom-bar button i {
+.frame #sidepanel #bottom-bar button i {
     margin-right: 3px;
     font-size: 1em;
 }
 
-#frame .content {
+.frame .content {
     float: right;
     width: 100%;
     height: 100%;
@@ -444,7 +450,7 @@ table {
     position: relative;
 }
 
-#frame .content .contact-profile {
+.frame .content .contact-profile {
     width: 100%;
     height: 30px;
     line-height: 30px;
@@ -452,35 +458,35 @@ table {
     text-align: center;
 }
 
-#frame .content .contact-profile img {
+.frame .content .contact-profile img {
     width: 40px;
     border-radius: 50%;
     float: left;
     margin: 9px 12px 0 9px;
 }
 
-#frame .content .contact-profile p {
+.frame .content .contact-profile p {
     float: left;
 }
 
-#frame .content .contact-profile .social-media {
+.frame .content .contact-profile .social-media {
     float: right;
 }
 
-#frame .content .contact-profile .social-media i {
+.frame .content .contact-profile .social-media i {
     margin-left: 14px;
     cursor: pointer;
 }
 
-#frame .content .contact-profile .social-media i:nth-last-child(1) {
+.frame .content .contact-profile .social-media i:nth-last-child(1) {
     margin-right: 20px;
 }
 
-#frame .content .contact-profile .social-media i:hover {
+.frame .content .contact-profile .social-media i:hover {
     color: #435f7a;
 }
 
-#frame .content .messages {
+.frame .content .messages {
     height: auto;
     min-height: 100%;
     max-height: 100%;
@@ -489,56 +495,56 @@ table {
     overflow-x: hidden;
 }
 
-#frame .content .messages::-webkit-scrollbar {
+.frame .content .messages::-webkit-scrollbar {
     width: 8px;
     background: transparent;
 }
 
-#frame .content .messages::-webkit-scrollbar-thumb {
+.frame .content .messages::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.3);
 }
 
-#frame .content .messages ul li {
+.frame .content .messages ul li {
     display: inline-block;
     clear: both;
     float: left;
     width: 100%;
 }
 
-#frame .content .messages ul li {
+.frame .content .messages ul li {
     margin-left: 5px;
 }
 
-#frame .content .messages ul li:nth-last-child(1) {
+.frame .content .messages ul li:nth-last-child(1) {
     margin-bottom: 20px;
 }
 
-#frame .content .messages ul li.sent img {
+.frame .content .messages ul li.sent img {
     margin: 6px 8px 0 0;
 }
 
-#frame .content .messages ul li.sent p {
+.frame .content .messages ul li.sent p {
     background: #435f7a;
     color: #f5f5f5;
 }
 
-#frame .content .messages ul li.replies img {
+.frame .content .messages ul li.replies img {
     float: right;
     margin: 6px 0 0 8px;
 }
 
-#frame .content .messages ul li.replies p {
+.frame .content .messages ul li.replies p {
     background: #f5f5f5;
     float: right;
 }
 
-#frame .content .messages ul li img {
+.frame .content .messages ul li img {
     width: 22px;
     border-radius: 50%;
     float: left;
 }
 
-#frame .content .messages ul li p {
+.frame .content .messages ul li p {
     display: inline-block;
     padding: 10px 15px;
     border-radius: 20px;
@@ -546,18 +552,18 @@ table {
     line-height: 130%;
 }
 
-#frame .content .message-input {
+.frame .content .message-input {
     position: absolute;
     bottom: 0;
     width: 100%;
     z-index: 99;
 }
 
-#frame .content .message-input .wrap {
+.frame .content .message-input .wrap {
     position: relative;
 }
 
-#frame .content .message-input .wrap input {
+.frame .content .message-input .wrap input {
     font-family: "proxima-nova", "Source Sans Pro", sans-serif;
     float: left;
     border: none;
@@ -569,11 +575,11 @@ table {
     height: 50px;
 }
 
-#frame .content .message-input .wrap input:focus {
+.frame .content .message-input .wrap input:focus {
     outline: none;
 }
 
-#frame .content .message-input .wrap .attachment {
+.frame .content .message-input .wrap .attachment {
     position: absolute;
     right: 60px;
     z-index: 4;
@@ -584,11 +590,11 @@ table {
     cursor: pointer;
 }
 
-#frame .content .message-input .wrap .attachment:hover {
+.frame .content .message-input .wrap .attachment:hover {
     opacity: 1;
 }
 
-#frame .content .message-input .wrap button {
+.frame .content .message-input .wrap button {
     float: right;
     border: none;
     width: 50px;
@@ -598,11 +604,11 @@ table {
     color: #f5f5f5;
 }
 
-#frame .content .message-input .wrap button:hover {
+.frame .content .message-input .wrap button:hover {
     background: #435f7a;
 }
 
-#frame .content .message-input .wrap button:focus {
+.frame .content .message-input .wrap button:focus {
     outline: none;
 }
 

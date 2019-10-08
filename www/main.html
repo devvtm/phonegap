@@ -2,13 +2,13 @@
 <html>
 
 <head>
+    <title>Hello World</title>
     <meta charset="utf-8"/>
     <meta name="format-detection" content="telephone=no"/>
     <meta name="referrer" content="unsafe-url"/>
     <meta name="referrer" content="origin-when-crossorigin"/>
     <meta name="msapplication-tap-highlight" content="no"/>
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"/>
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src *; media-src *"/>
     <link rel="stylesheet" type="text/css" href="css/index.css"/>
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
     <link rel="stylesheet" type="text/css" href="css/chat.css"/>
@@ -26,12 +26,28 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/chat.js"></script>
+    <script type="text/javascript" src="js/chat_list.js"></script>
     <script type="text/javascript" src="js/chat_layout.js"></script>
     <script type="text/javascript" src="js/menu.js"></script>
     <script type="text/javascript" src="js/onesignal.js"></script>
+    <script type="text/javascript" src="js/handlebars-v4.3.1.js"></script>
     <script type="text/javascript" src="js/bootstrap-toggle.js"></script>
 
-    <title>Hello World</title>
+    <!-- Templates -->
+    <script id="contact-template" type="text/x-handlebars-template">
+        <li class="contact" data-id="{{id}}">
+            <div class="wrap">
+                <div class="image-wrap">
+                    <img src="img/profile.png" alt=""/>
+                </div>
+                <div class="meta">
+                    <p class="name">{{name}}</p>
+                    <p class="department">{{department}}</p>
+                </div>
+            </div>
+        </li>
+    </script>
+
     <script type="text/javascript">
         $(document).ready(function ()
         {
@@ -76,6 +92,7 @@
                 </a>
             </li>
             <li>
+            <li>
                 <a class="nav-link" id="chat-tab" data-toggle="tab" href="#chat" role="tab" aria-controls="chat" aria-selected="false">
                     Чат с сотрудником
                 </a>
@@ -117,7 +134,7 @@
             <div class="tab-pane fade show active" id="messages" role="tabpanel" aria-labelledby="messages-tab">
                 <!--Сообщения-->
                 <div class="chat-icon">
-                    <button type="button" class="btn btn-secondary"><i class="fa fa-comments fa-3x"></i></button>
+                    <button type="button" class="btn btn-success" onclick="chatList.loadChatList()"><i class="fa fa-comments fa-3x"></i></button>
                 </div>
                 <table class="table table-striped">
                     <tbody id="messages-table">
@@ -126,7 +143,7 @@
             </div>
             <div class="tab-pane fade" id="chat" role="tabpanel" aria-labelledby="chat-tab">
                 <!--Чат-->
-                <div id="frame">
+                <div class="frame">
                     <div class="content">
                         <div class="contact-profile" id="resource-name">
                             Harvey Specter
@@ -168,114 +185,15 @@
             </div>
             <div class="tab-pane fade" id="chatList" role="tabpanel" aria-labelledby="chat-list-tab">
                 <!--Список сотрудников для чата-->
-                <div id="frame">
+                <div class="frame">
                     <div id="sidepanel">
                         <div id="search">
-                            <label for=""><i class="fa fa-search" aria-hidden="true"></i></label>
-                            <input type="text" placeholder="Поиск"/>
+                            <input type="text" id="resource-filter" placeholder="Поиск"/>
+                            <i class="fa fa-search" aria-hidden="true" onclick="chatList.applyFilter()"></i>
+                            <i class="fa fa-trash" aria-hidden="true" onclick="chatList.clearFilter()"></i>
                         </div>
                         <div id="contacts">
-                            <ul>
-                                <li class="contact">
-                                    <div class="wrap">
-                                        <span class="contact-status online"></span>
-                                        <img src="http://emilcarlsson.se/assets/louislitt.png" alt=""/>
-                                        <div class="meta">
-                                            <p class="name">Louis Litt</p>
-                                            <p class="preview">You just got LITT up, Mike.</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="contact active">
-                                    <div class="wrap">
-                                        <span class="contact-status busy"></span>
-                                        <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt=""/>
-                                        <div class="meta">
-                                            <p class="name">Harvey Specter</p>
-                                            <p class="preview">Wrong. You take the gun, or you pull out a bigger one. Or, you call their bluff. Or, you do any one of a hundred and forty six other things.</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="contact">
-                                    <div class="wrap">
-                                        <span class="contact-status away"></span>
-                                        <img src="http://emilcarlsson.se/assets/rachelzane.png" alt=""/>
-                                        <div class="meta">
-                                            <p class="name">Rachel Zane</p>
-                                            <p class="preview">I was thinking that we could have chicken tonight, sounds good?</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="contact">
-                                    <div class="wrap">
-                                        <span class="contact-status online"></span>
-                                        <img src="http://emilcarlsson.se/assets/donnapaulsen.png" alt=""/>
-                                        <div class="meta">
-                                            <p class="name">Donna Paulsen</p>
-                                            <p class="preview">Mike, I know everything! I'm Donna..</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="contact">
-                                    <div class="wrap">
-                                        <span class="contact-status busy"></span>
-                                        <img src="http://emilcarlsson.se/assets/jessicapearson.png" alt=""/>
-                                        <div class="meta">
-                                            <p class="name">Jessica Pearson</p>
-                                            <p class="preview">Have you finished the draft on the Hinsenburg deal?</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="contact">
-                                    <div class="wrap">
-                                        <span class="contact-status"></span>
-                                        <img src="http://emilcarlsson.se/assets/haroldgunderson.png" alt=""/>
-                                        <div class="meta">
-                                            <p class="name">Harold Gunderson</p>
-                                            <p class="preview">Thanks Mike! :)</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="contact">
-                                    <div class="wrap">
-                                        <span class="contact-status"></span>
-                                        <img src="http://emilcarlsson.se/assets/danielhardman.png" alt=""/>
-                                        <div class="meta">
-                                            <p class="name">Daniel Hardman</p>
-                                            <p class="preview">We'll meet again, Mike. Tell Jessica I said 'Hi'.</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="contact">
-                                    <div class="wrap">
-                                        <span class="contact-status busy"></span>
-                                        <img src="http://emilcarlsson.se/assets/katrinabennett.png" alt=""/>
-                                        <div class="meta">
-                                            <p class="name">Katrina Bennett</p>
-                                            <p class="preview">I've sent you the files for the Garrett trial.</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="contact">
-                                    <div class="wrap">
-                                        <span class="contact-status"></span>
-                                        <img src="http://emilcarlsson.se/assets/charlesforstman.png" alt=""/>
-                                        <div class="meta">
-                                            <p class="name">Charles Forstman</p>
-                                            <p class="preview">Mike, this isn't over.</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="contact">
-                                    <div class="wrap">
-                                        <span class="contact-status"></span>
-                                        <img src="http://emilcarlsson.se/assets/jonathansidwell.png" alt=""/>
-                                        <div class="meta">
-                                            <p class="name">Jonathan Sidwell</p>
-                                            <p class="preview"><span>You:</span> That's bullshit. This deal is solid.</p>
-                                        </div>
-                                    </div>
-                                </li>
+                            <ul id="contacts-list">
                             </ul>
                         </div>
                     </div>

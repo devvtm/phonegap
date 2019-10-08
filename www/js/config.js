@@ -25,7 +25,7 @@ var CONFIG = {
             case "VTM":
             {
                 //this.siteUrl = "https://proj.vtm-dorproekt.ru:9443/";
-                this.siteUrl = "http://192.168.56.1:8090/";
+                this.siteUrl = "http://192.168.0.104:8090/";
                 break;
             }
             case "IKPAD":
