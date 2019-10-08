@@ -38,9 +38,9 @@ function loadData()
         {
             userId: localStorage.getItem('userId')
         },
-        function (json, status)
+        function (data, status)
         {
-            var data = JSON.parse(json);
+            console.log('loadData');
             updateMeetingsContainer(data.meetings);
             updateMessagesContainer(data.messages);
             updateLinks();
@@ -136,8 +136,8 @@ function buildMessageItem(item)
     content = content.split("target='_system'").join("");
     content = content.split("href").join("target='_system' href");
 
-    content += "<button type='button' class='btn btn-success btn-sm link-btn margin-5' onclick='setMessageRead(" + item.confirmationId + ")'>Прочитано</button>";
-    content += "<button type='button' class='btn btn-primary btn-sm link-btn margin-5' onclick='loadChat(" + item.authorId + ")'>Перейти к чату</button>";
+    content += "<br/><button type='button' class='btn btn-primary btn-sm link-btn margin-5' onclick='loadChat(" + item.authorId + ")'><i class='fa fa-comments fa-2x'></i></button>";
+    content += "<button type='button' class='btn btn-success btn-sm link-btn margin-5' onclick='setMessageRead(" + item.confirmationId + ")'><i class='fa fa-check fa-2x'></i></button>";
 
     return "<tr><td>" + content + "</td></tr>";
 }

@@ -45,10 +45,8 @@ function applySettings()
         {
             userId: localStorage.getItem('userId')
         },
-        function (json, status)
+        function (settings, status)
         {
-            var settings = JSON.parse(json);
-
             if (settings.allNotificationDisabled)
             {
                 $('#all-notification-choose').bootstrapToggle('on')

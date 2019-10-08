@@ -71,6 +71,7 @@
         <splash height="480" platform="ios" src="www/res/screen/ios/icon-1024.png" width="320" />
     </platform>
     <access origin="*" />
+    <allow-navigation href="http://cdnjs.cloudflare.com/*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <platform name="android">

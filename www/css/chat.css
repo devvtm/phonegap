@@ -3,8 +3,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     display: block
 }
 
-ul
-{
+ul {
     margin: 5px;
     padding-inline-start: unset !important;
 }
@@ -40,11 +39,10 @@ table {
 #frame #sidepanel {
     float: left;
     min-width: 280px;
-    max-width: 340px;
-    width: 40%;
+    width: 100%;
     height: 100%;
-    background: #2c3e50;
-    color: #f5f5f5;
+    background: white;
+    color: black;
     overflow: hidden;
     position: relative;
 }
@@ -244,7 +242,7 @@ table {
 #frame #sidepanel #profile .wrap #expanded input {
     border: none;
     margin-bottom: 6px;
-    background: #32465a;
+    background: white;
     border-radius: 3px;
     color: #f5f5f5;
     padding: 7px;
@@ -257,8 +255,8 @@ table {
 }
 
 #frame #sidepanel #search {
-    border-top: 1px solid #32465a;
-    border-bottom: 1px solid #32465a;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
     font-weight: 300;
 }
 
@@ -270,50 +268,50 @@ table {
 #frame #sidepanel #search input {
     font-family: "proxima-nova", "Source Sans Pro", sans-serif;
     padding: 10px 0 10px 46px;
-    width: calc(100% - 25px);
+    width: 100%;
     border: none;
-    background: #32465a;
-    color: #f5f5f5;
+    background: #b9b387;
+    color: black;
+    outline: none;
 }
 
 #frame #sidepanel #search input:focus {
-    outline: none;
-    background: #435f7a;
+    outline: auto;
 }
 
 #frame #sidepanel #search input::-webkit-input-placeholder {
-    color: #f5f5f5;
+    color: black;
 }
 
 #frame #sidepanel #search input::-moz-placeholder {
-    color: #f5f5f5;
+    color: black;
 }
 
 #frame #sidepanel #search input:-ms-input-placeholder {
-    color: #f5f5f5;
+    color: black;
 }
 
 #frame #sidepanel #search input:-moz-placeholder {
-    color: #f5f5f5;
+    color: black;
 }
 
 #frame #sidepanel #contacts {
-    height: calc(100% - 177px);
+    height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
 }
 
 #frame #sidepanel #contacts.expanded {
-    height: calc(100% - 334px);
+    height: 100%;
 }
 
 #frame #sidepanel #contacts::-webkit-scrollbar {
     width: 8px;
-    background: #2c3e50;
+    background: #b7b182;
 }
 
 #frame #sidepanel #contacts::-webkit-scrollbar-thumb {
-    background-color: #243140;
+    background-color: #6b6548;
 }
 
 #frame #sidepanel #contacts ul li.contact {
@@ -321,19 +319,19 @@ table {
     padding: 10px 0 15px 0;
     font-size: 0.9em;
     cursor: pointer;
+    border-bottom: 1px solid #86805e;
 }
 
 #frame #sidepanel #contacts ul li.contact:hover {
-    background: #32465a;
+    /*background: #86805e;*/
 }
 
 #frame #sidepanel #contacts ul li.contact.active {
-    background: #32465a;
-    border-right: 5px solid #435f7a;
+    background: #86805e;
 }
 
 #frame #sidepanel #contacts ul li.contact.active span.contact-status {
-    border: 2px solid #32465a !important;
+    /*border: 2px solid #86805e !important;*/
 }
 
 #frame #sidepanel #contacts ul li.contact .wrap {
@@ -366,7 +364,7 @@ table {
 }
 
 #frame #sidepanel #contacts ul li.contact .wrap img {
-    width: 40px;
+    width: 50px;
     border-radius: 50%;
     float: left;
     margin-right: 10px;
@@ -414,7 +412,7 @@ table {
     border: none;
     width: 50%;
     padding: 10px 0;
-    background: #32465a;
+    background: white;
     color: #f5f5f5;
     cursor: pointer;
     font-size: 0.85em;
@@ -506,8 +504,8 @@ table {
     float: left;
     width: 100%;
 }
-#frame .content .messages ul li
-{
+
+#frame .content .messages ul li {
     margin-left: 5px;
 }
 
@@ -566,7 +564,7 @@ table {
     width: calc(100% - 90px);
     padding: 11px 32px 10px 8px;
     font-size: 0.8em;
-    color: #32465a;
+    color: white;
     border-radius: 10px;
     height: 50px;
 }
@@ -596,7 +594,7 @@ table {
     width: 50px;
     padding: 12px 0;
     cursor: pointer;
-    background: #32465a;
+    background: white;
     color: #f5f5f5;
 }
 
@@ -608,12 +606,10 @@ table {
     outline: none;
 }
 
-.message-input .wrap
-{
+.message-input .wrap {
     display: flex;
 }
 
-.attachment-button
-{
+.attachment-button {
 
 }

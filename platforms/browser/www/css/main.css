@@ -349,6 +349,7 @@ html {
 .link-btn {
     float: right;
     margin-top: 5px;
+    padding: 5px !important;
 }
 
 .header-button-container {
@@ -427,6 +428,13 @@ html {
 .margin-5
 {
     margin: 5px;
+}
+
+.chat-icon
+{
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
 }
 
 

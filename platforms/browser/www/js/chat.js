@@ -15,11 +15,9 @@ function loadChat(resourceId)
             currentUserId: currentUserId,
             withUserId: withResourceId
         },
-        function (json, status)
+        function (data, status)
         {
-            var data = JSON.parse(json);
             updateChatContainer(data.messages);
-            console.log(json);
             console.log(data);
         });
 }
