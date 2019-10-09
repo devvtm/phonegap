@@ -14,7 +14,7 @@ document.addEventListener('deviceready', function () {
 
     window.plugins.OneSignal.addSubscriptionObserver(function (state) {
         if (!state.from.subscribed && state.to.subscribed) {
-            subscribe(device.uuid, state.to.userId)
+            auth.subscribe(device.uuid, state.to.userId)
         }
     });
 

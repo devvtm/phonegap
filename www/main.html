@@ -16,27 +16,9 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap-toggle.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- Scripts -->
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript" src="js/config.js"></script>
-    <script type="text/javascript" src="js/utils.js"></script>
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/popper.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
-    <script type="text/javascript" src="js/auth.js"></script>
-    <script type="text/javascript" src="js/chat.js"></script>
-    <script type="text/javascript" src="js/chat_list.js"></script>
-    <script type="text/javascript" src="js/chat_layout.js"></script>
-    <script type="text/javascript" src="js/menu.js"></script>
-    <script type="text/javascript" src="js/onesignal.js"></script>
-    <script type="text/javascript" src="js/handlebars-v4.3.1.js"></script>
-    <script type="text/javascript" src="js/bootstrap-toggle.js"></script>
-
     <!-- Templates -->
     <script id="contact-template" type="text/x-handlebars-template">
-        <li class="contact" data-id="{{id}}" data-group="{{group}}">
+        <li class="contact" data-id="{{id}}" data-group="{{group}}" data-name="{{name}}">
             <div class="wrap">
                 <div class="image-wrap">
                     <img src="img/profile.png" alt=""/>
@@ -49,6 +31,44 @@
         </li>
     </script>
 
+    <script id="button-chat-template" type="text/x-handlebars-template">
+        <button type='button' class='btn btn-primary btn-sm link-btn margin-5'
+                onclick='chat.loadChat({{authorId}}, "{{authorName}}")'>
+            <i class='fa fa-comments fa-2x'></i>
+        </button>
+    </script>
+
+    <script id="button-read-template" type="text/x-handlebars-template">
+        <button type='button' class='btn btn-success btn-sm link-btn margin-5'
+                onclick='chat.setMessageRead({{confirmationId}})'><i class='fa fa-check fa-2x'></i></button>
+    </script>
+
+    <script id="meeting-item-template" type="text/x-handlebars-template">
+        <tr style='background-color: DataContainer.getMeetingsStatusColor("{{status}}")'>
+            <td>{{content}}
+                <button type='button' class='btn btn-primary btn-sm link-btn' onclick='DataContainer.gotoMeeting({{id}})'>Перейти к совещанию</button>
+            </td>
+        </tr>
+    </script>
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/utils.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/popper.js"></script>
+    <script type="text/javascript" src="js/handlebars-v4.3.1.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-toggle.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/auth.js"></script>
+    <script type="text/javascript" src="js/chat.js"></script>
+    <script type="text/javascript" src="js/chat_list.js"></script>
+    <script type="text/javascript" src="js/chat_layout.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
+    <script type="text/javascript" src="js/onesignal.js"></script>
+
     <script type="text/javascript">
         $(document).ready(function ()
         {
@@ -60,11 +80,11 @@
             }
             else
             {
-                window.loadData();
+                container.loadData();
             }
 
-            window.buildLeftMenu();
-            window.applySettings();
+            app.buildLeftMenu();
+            app.applySettings();
         });
     </script>
 </head>
@@ -88,13 +108,13 @@
                 </a>
             </li>
             <li>
-                <a class="nav-link" id="chat-list-tab" data-toggle="tab" href="#chatList" role="tab" aria-controls="chatList" aria-selected="false">
+                <a class="nav-link display-none" id="chat-list-tab" data-toggle="tab" href="#chatList" role="tab" aria-controls="chatList" aria-selected="false">
                     Список сотрудников
                 </a>
             </li>
             <li>
             <li>
-                <a class="nav-link" id="chat-tab" data-toggle="tab" href="#chat" role="tab" aria-controls="chat" aria-selected="false">
+                <a class="nav-link display-none" id="chat-tab" data-toggle="tab" href="#chat" role="tab" aria-controls="chat" aria-selected="false">
                     Чат с сотрудником
                 </a>
             </li>
@@ -104,7 +124,7 @@
                 </a>
             </li>
             <li>
-                <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false" onclick="applySettings()">
+                <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false" onclick="app.applySettings()">
                     Настройки
                 </a>
             </li>
@@ -146,32 +166,11 @@
                 <!--Чат-->
                 <div class="frame">
                     <div class="content">
-                        <div class="contact-profile" id="resource-name">
-                            Harvey Specter
+                        <div class="contact-profile" id="chat-name">
+
                         </div>
                         <div class="messages">
                             <ul id="chat-container">
-                                <li class="sent">
-                                    <p>How the hell am I supposed to get a jury to believe you when I am not even sure that I do?!</p>
-                                </li>
-                                <li class="replies">
-                                    <p>When you're backed against the wall, break the god damn thing down.</p>
-                                </li>
-                                <li class="replies">
-                                    <p>Excuses don't win championships.</p>
-                                </li>
-                                <li class="sent">
-                                    <p>Oh y e sdfsdfsdfdfah, did Michael Jordan tell you that?</p>
-                                </li>
-                                <li class="replies">
-                                    <p>No, I told him that.</p>
-                                </li>
-                                <li class="replies">
-                                    <p>What are your choices when someone puts a gun to your head?</p>
-                                </li>
-                                <li class="sent">
-                                    <p>What are you talking about? You do what they say or they shoot you.</p>
-                                </li>
                             </ul>
                         </div>
                         <div class="message-input">
@@ -189,7 +188,7 @@
                 <div class="frame">
                     <div id="sidepanel">
                         <div id="search">
-                            <input type="text" id="resource-filter" placeholder="Поиск"/>
+                            <input type="text" class="resource-filter-input" id="resource-filter" placeholder="Поиск"/>
                             <i class="fa fa-search" aria-hidden="true" onclick="chatList.applyFilter()"></i>
                             <i class="fa fa-trash" aria-hidden="true" onclick="chatList.clearFilter()"></i>
                         </div>
@@ -228,7 +227,7 @@
                             Запретить все уведомления
                         </label>
                     </div>
-                    <button type="button" class="save-settings-btn btn btn-success" onclick="changeSettings()">Сохранить</button>
+                    <button type="button" class="save-settings-btn btn btn-success" onclick="app.changeSettings()">Сохранить</button>
                 </div>
 
             </div>

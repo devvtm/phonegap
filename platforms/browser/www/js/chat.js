@@ -1,10 +1,10 @@
 class Chat {
 
-    loadChat(resourceId)
+    loadChat(id, name)
     {
-        if (resourceId != null)
+        if (id != null)
         {
-            localStorage.setItem('withResourceId', resourceId);
+            localStorage.setItem('withResourceId', id);
         }
 
         var context = this;
@@ -12,6 +12,7 @@ class Chat {
         var withResourceId = localStorage.getItem('withResourceId');
 
         $('#chat-tab').tab('show');
+        $('#chat-name').text(name);
 
         $.post(CONFIG.getChatUrl,
             {
@@ -20,7 +21,8 @@ class Chat {
             },
             function (data, status)
             {
-                context.updateChatContainer(data.messages);
+                console.log(data);
+                context.updateChatContainer(data);
             });
     }
 
@@ -32,13 +34,28 @@ class Chat {
             },
             function (json, status)
             {
-                loadData();
+                container.loadData();
             });
     }
 
     updateChatContainer(items)
     {
+        if (items.length)
+        {
+            items.forEach(function (item)
+            {
+                self.addMessage(item);
+            });
+        }
 
+        $(".messages").animate({scrollTop: $(document).height()}, "fast");
+    }
+
+    addMessage(item)
+    {
+        var style = item.reply ? 'replies' : 'sent';
+        var newItem = '<li class="' + style + '"><p>' + item.message + '</p></li>';
+        $('.messages ul').prepend(newItem);
     }
 
     sendMessage()

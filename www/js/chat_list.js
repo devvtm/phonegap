@@ -5,14 +5,27 @@ class ChatList {
 
     constructor()
     {
+        $(document).on('click', '.contact', function (e, item)
+        {
+            var group = $(this).data('group');
+            var id = $(this).data('id');
+            var name = $(this).data('name');
 
+            if (group)
+            {
+
+            }
+            else
+            {
+                chat.loadChat(name);
+            }
+        });
     }
 
     loadChatList()
     {
         var context = this;
         var currentUserId = localStorage.getItem('userId');
-        var withResourceId = localStorage.getItem('withResourceId');
 
         $('#chat-list-tab').tab('show');
 
@@ -59,14 +72,6 @@ class ChatList {
         $('#resource-filter').val("");
         this.filter = "";
         this.updateChatListContainer();
-    }
-
-    gotoChat()
-    {
-        $('.contact').on('click', function(item)
-        {
-
-        });
     }
 }
 
