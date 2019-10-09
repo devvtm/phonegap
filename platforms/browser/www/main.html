@@ -25,6 +25,7 @@
     <script type="text/javascript" src="js/popper.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/auth.js"></script>
     <script type="text/javascript" src="js/chat.js"></script>
     <script type="text/javascript" src="js/chat_list.js"></script>
     <script type="text/javascript" src="js/chat_layout.js"></script>
@@ -35,14 +36,14 @@
 
     <!-- Templates -->
     <script id="contact-template" type="text/x-handlebars-template">
-        <li class="contact" data-id="{{id}}">
+        <li class="contact" data-id="{{id}}" data-group="{{group}}">
             <div class="wrap">
                 <div class="image-wrap">
                     <img src="img/profile.png" alt=""/>
                 </div>
                 <div class="meta">
                     <p class="name">{{name}}</p>
-                    <p class="department">{{department}}</p>
+                    <p class="description">{{description}}</p>
                 </div>
             </div>
         </li>
@@ -108,7 +109,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" onclick="window.logout(); return false;">
+                <a href="#" onclick="auth.logout(); return false;">
                     Выйти
                 </a>
             </li>
@@ -175,9 +176,9 @@
                         </div>
                         <div class="message-input">
                             <div class="wrap">
-                                <input type="text" placeholder="Введите сообщение"/>
-                                <button class="button attachment-button"></button>
-                                <button class="submit create-message-button"></button>
+                                <textarea id="message-field" type="text" placeholder="Введите сообщение"></textarea>
+                                <button class="button attachment-button"><i class="fa fa-paperclip fa-2x" onclick="chat.addAttachment()"></i></button>
+                                <button class="submit create-message-button"><i class="fa fa-share fa-2x" onclick="chat.sendMessage()"></i></button>
                             </div>
                         </div>
                     </div>

@@ -58,6 +58,7 @@ html {
 
 #page-content-wrapper {
     width: 100%;
+    height: 70px;
 }
 
 #wrapper.toggled #page-content-wrapper {

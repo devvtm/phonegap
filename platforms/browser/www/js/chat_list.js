@@ -3,6 +3,11 @@ class ChatList {
     users = [];
     filter = "";
 
+    constructor()
+    {
+
+    }
+
     loadChatList()
     {
         var context = this;
@@ -54,6 +59,14 @@ class ChatList {
         $('#resource-filter').val("");
         this.filter = "";
         this.updateChatListContainer();
+    }
+
+    gotoChat()
+    {
+        $('.contact').on('click', function(item)
+        {
+
+        });
     }
 }
 

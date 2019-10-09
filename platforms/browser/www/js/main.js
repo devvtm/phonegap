@@ -1,34 +1,3 @@
-function logout()
-{
-    $.post(CONFIG.logoutUrl,
-        {
-            userId: localStorage.getItem('userId'),
-            deviceId: localStorage.getItem('deviceId')
-        },
-        function (json, status)
-        {
-            localStorage.removeItem('userId');
-            window.plugins.OneSignal.setSubscription(false);
-            window.location = "index.html";
-        });
-}
-
-function subscribe(deviceId, signalId)
-{
-    localStorage.setItem('deviceId', deviceId);
-    localStorage.setItem('signalId', signalId);
-
-    $.post(CONFIG.subscribeUrl,
-        {
-            userId: localStorage.getItem('userId'),
-            deviceId: deviceId,
-            signalId: signalId
-        },
-        function (json, status)
-        {
-        });
-}
-
 function loadData()
 {
     var $spinner = $('#spinner');
@@ -136,20 +105,8 @@ function buildMessageItem(item)
     content = content.split("target='_system'").join("");
     content = content.split("href").join("target='_system' href");
 
-    content += "<br/><button type='button' class='btn btn-primary btn-sm link-btn margin-5' onclick='loadChat(" + item.authorId + ")'><i class='fa fa-comments fa-2x'></i></button>";
-    content += "<button type='button' class='btn btn-success btn-sm link-btn margin-5' onclick='setMessageRead(" + item.confirmationId + ")'><i class='fa fa-check fa-2x'></i></button>";
+    content += "<br/><button type='button' class='btn btn-primary btn-sm link-btn margin-5' onclick='chat.loadChat(" + item.authorId + ")'><i class='fa fa-comments fa-2x'></i></button>";
+    content += "<button type='button' class='btn btn-success btn-sm link-btn margin-5' onclick='chat.setMessageRead(" + item.confirmationId + ")'><i class='fa fa-check fa-2x'></i></button>";
 
     return "<tr><td>" + content + "</td></tr>";
-}
-
-function setMessageRead(confirmationId)
-{
-    $.post(CONFIG.messageReadUrl,
-        {
-            confirmationId: confirmationId
-        },
-        function (json, status)
-        {
-            loadData();
-        });
 }

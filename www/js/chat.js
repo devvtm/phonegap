@@ -1,28 +1,55 @@
-function loadChat(resourceId)
-{
-    if (resourceId != null)
+class Chat {
+
+    loadChat(resourceId)
     {
-        localStorage.setItem('withResourceId', resourceId);
+        if (resourceId != null)
+        {
+            localStorage.setItem('withResourceId', resourceId);
+        }
+
+        var context = this;
+        var currentUserId = localStorage.getItem('userId');
+        var withResourceId = localStorage.getItem('withResourceId');
+
+        $('#chat-tab').tab('show');
+
+        $.post(CONFIG.getChatUrl,
+            {
+                currentUserId: currentUserId,
+                withUserId: withResourceId
+            },
+            function (data, status)
+            {
+                context.updateChatContainer(data.messages);
+            });
     }
 
-    var currentUserId = localStorage.getItem('userId');
-    var withResourceId = localStorage.getItem('withResourceId');
+    setMessageRead(confirmationId)
+    {
+        $.post(CONFIG.messageReadUrl,
+            {
+                confirmationId: confirmationId
+            },
+            function (json, status)
+            {
+                loadData();
+            });
+    }
 
-    $('#chat-tab').tab('show');
+    updateChatContainer(items)
+    {
 
-    $.post(CONFIG.getChatUrl,
-        {
-            currentUserId: currentUserId,
-            withUserId: withResourceId
-        },
-        function (data, status)
-        {
-            updateChatContainer(data.messages);
-            console.log(data);
-        });
+    }
+
+    sendMessage()
+    {
+
+    }
+
+    addAttachment()
+    {
+
+    }
 }
 
-function updateChatContainer(items)
-{
-
-}
+var chat = new Chat();
