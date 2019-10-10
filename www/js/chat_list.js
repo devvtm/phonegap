@@ -74,6 +74,8 @@ class ChatList {
             var child = template(el);
             $contacts.append(child);
         });
+
+        context.loadUserProfileImages();
     }
 
     applyFilter()
@@ -87,5 +89,16 @@ class ChatList {
         $('#resource-filter').val("");
         this.filter = "";
         this.updateChatListContainer();
+    }
+
+    loadUserProfileImages()
+    {
+        $('img[data-lazysrc]').each(function ()
+            {
+                var id = $(this).attr('data-lazysrc');
+                var src = CONFIG.buildUrl(CONFIG.getUserImageUrl, "id", id);
+                $(this).attr('src', src);
+            }
+        );
     }
 }

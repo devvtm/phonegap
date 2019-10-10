@@ -2,7 +2,11 @@
     <li class="contact" data-id="{{id}}" data-group="{{group}}" data-name="{{name}}">
         <div class="wrap">
             <div class="image-wrap">
-                <img src="img/profile.png" alt=""/>
+                {{#if group}}
+                    <img src="img/group.png" alt=""/>
+                {{^}}
+                    <img src="img/profile.png" data-lazysrc="{{id}}" alt=""/>
+                {{/if}}
             </div>
             <div class="meta">
                 <p class="name">{{name}}</p>

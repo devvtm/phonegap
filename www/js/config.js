@@ -4,7 +4,7 @@ var CONFIG = {
     messageRefreshTime: 10 * 1000,
 
     // MobileAppController
-    siteUrl : null,
+    siteUrl: null,
     loginUrl: null,
     logoutUrl: null,
     dataUrl: null,
@@ -19,7 +19,11 @@ var CONFIG = {
     createMessageUrl: null,
     getResourcesUrl: null,
 
-    initConfig: function()
+    // MediaController
+    getUserImageUrl: null,
+
+
+    initConfig: function ()
     {
         var server = localStorage.getItem('server');
 
@@ -55,15 +59,22 @@ var CONFIG = {
         this.getChatUrl = this.siteUrl + "/mobileappmessage/getChat";
         this.createMessageUrl = this.siteUrl + "/mobileappmessage/createMessage";
         this.getResourcesUrl = this.siteUrl + "/mobileappmessage/getResources";
+
+        this.getUserImageUrl = this.siteUrl + "/media/getUserImage";
     },
 
-    loadPage: function(page)
+    loadPage: function (page)
     {
         window.location = page + ".html";
     },
 
-    loadPage: function(page, param, value)
+    loadPage: function (page, param, value)
     {
         window.location = page + ".html?" + param + "=" + value;
+    },
+
+    buildUrl: function (page, param, value)
+    {
+        return page + "?" + param + "=" + value;
     }
 };
