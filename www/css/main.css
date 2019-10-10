@@ -431,6 +431,11 @@ html {
     margin: 5px;
 }
 
+.width100
+{
+    width: 100%;
+}
+
 .chat-icon
 {
     position: fixed;

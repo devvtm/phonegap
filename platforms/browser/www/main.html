@@ -16,41 +16,6 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap-toggle.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- Templates -->
-    <script id="contact-template" type="text/x-handlebars-template">
-        <li class="contact" data-id="{{id}}" data-group="{{group}}" data-name="{{name}}">
-            <div class="wrap">
-                <div class="image-wrap">
-                    <img src="img/profile.png" alt=""/>
-                </div>
-                <div class="meta">
-                    <p class="name">{{name}}</p>
-                    <p class="description">{{description}}</p>
-                </div>
-            </div>
-        </li>
-    </script>
-
-    <script id="button-chat-template" type="text/x-handlebars-template">
-        <button type='button' class='btn btn-primary btn-sm link-btn margin-5'
-                onclick='chat.loadChat({{authorId}}, "{{authorName}}")'>
-            <i class='fa fa-comments fa-2x'></i>
-        </button>
-    </script>
-
-    <script id="button-read-template" type="text/x-handlebars-template">
-        <button type='button' class='btn btn-success btn-sm link-btn margin-5'
-                onclick='chat.setMessageRead({{confirmationId}})'><i class='fa fa-check fa-2x'></i></button>
-    </script>
-
-    <script id="meeting-item-template" type="text/x-handlebars-template">
-        <tr style='background-color: DataContainer.getMeetingsStatusColor("{{status}}")'>
-            <td>{{content}}
-                <button type='button' class='btn btn-primary btn-sm link-btn' onclick='DataContainer.gotoMeeting({{id}})'>Перейти к совещанию</button>
-            </td>
-        </tr>
-    </script>
-
     <!-- Scripts -->
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
@@ -73,6 +38,7 @@
         $(document).ready(function ()
         {
             CONFIG.initConfig();
+            app.loadTemplates();
 
             if (localStorage.getItem('userId') == null)
             {
@@ -85,12 +51,14 @@
 
             app.buildLeftMenu();
             app.applySettings();
+
+            chat.loadChat(65, "Милованова");
         });
     </script>
 </head>
 
 <body>
-
+<div id="template-container"></div>
 <div id="wrapper">
     <div class="overlay"></div>
 

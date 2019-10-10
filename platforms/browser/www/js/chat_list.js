@@ -5,6 +5,8 @@ class ChatList {
 
     constructor()
     {
+        var context = this;
+
         $(document).on('click', '.contact', function (e, item)
         {
             var group = $(this).data('group');
@@ -17,7 +19,20 @@ class ChatList {
             }
             else
             {
-                chat.loadChat(name);
+                chat.loadChat(id, name);
+            }
+        });
+
+        $(document).on('keyup', '#resource-filter', function (e, item)
+        {
+            var value = $(this).val();
+            if (value && value.length)
+            {
+                context.applyFilter();
+            }
+            else
+            {
+                context.clearFilter();
             }
         });
     }

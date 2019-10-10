@@ -1,5 +1,11 @@
 class Chat {
 
+    initTemplate()
+    {
+        var source = document.getElementById("chat-item-template").innerHTML;
+        self.template = Handlebars.compile(source);
+    }
+
     loadChat(id, name)
     {
         if (id != null)
@@ -21,7 +27,6 @@ class Chat {
             },
             function (data, status)
             {
-                console.log(data);
                 context.updateChatContainer(data);
             });
     }
@@ -40,21 +45,26 @@ class Chat {
 
     updateChatContainer(items)
     {
+        var context = this;
+        context.initTemplate();
+
         if (items.length)
         {
             items.forEach(function (item)
             {
-                self.addMessage(item);
+                context.addMessage(item);
             });
         }
 
+        Helper.updateLinksAuth();
         $(".messages").animate({scrollTop: $(document).height()}, "fast");
     }
 
     addMessage(item)
     {
-        var style = item.reply ? 'replies' : 'sent';
-        var newItem = '<li class="' + style + '"><p>' + item.message + '</p></li>';
+        item.message = Helper.changeUrlToGlobal(item.message);
+        item.style = item.reply ? 'replies' : 'sent';
+        var newItem = self.template(item);
         $('.messages ul').prepend(newItem);
     }
 

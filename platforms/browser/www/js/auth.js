@@ -7,7 +7,7 @@ class Auth {
         var password = $('#password').val();
         var server = $('#server').val();
 
-        var errorVisible = isEmpty(login) || isEmpty(password);
+        var errorVisible = Helper.isEmpty(login) || Helper.isEmpty(password);
 
         context.setErrorVisible(errorVisible);
 
@@ -24,7 +24,7 @@ class Auth {
                 },
                 function (userId, status)
                 {
-                    if (isEmpty(userId))
+                    if (Helper.isEmpty(userId))
                     {
                         context.setErrorVisible(true);
                     }

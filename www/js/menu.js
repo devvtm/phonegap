@@ -78,6 +78,11 @@ class App {
                 $('#success-modal').modal('show');
             });
     }
+
+    loadTemplates()
+    {
+        $('#template-container').load('template.html');
+    }
 }
 
 var app = new App();

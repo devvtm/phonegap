@@ -1,6 +1,6 @@
 class DataContainer {
 
-    constructor()
+    initTemplates()
     {
         var source = document.getElementById("button-chat-template").innerHTML;
         self.chatTemplate = Handlebars.compile(source);
@@ -24,7 +24,7 @@ class DataContainer {
             },
             function (data, status)
             {
-                console.log('loadData');
+                context.initTemplates();
                 context.updateMeetingsContainer(data.meetings);
                 context.updateMessagesContainer(data.messages);
                 context.updateLinks();
@@ -39,9 +39,9 @@ class DataContainer {
             var href = $(this).attr('href');
             var role = $(this).attr('role');
 
-            if (isEmpty(role))
+            if (Helper.isEmpty(role))
             {
-                $(this).attr('href', addAuthToUrl(href));
+                $(this).attr('href', Helper.addAuthToUrl(href));
             }
         });
     }
@@ -70,7 +70,7 @@ class DataContainer {
 
     static gotoMeeting(id)
     {
-        loadAppPage(CONFIG.meetingUrl + id);
+        Helper.loadAppPage(CONFIG.meetingUrl + id);
     }
 
     static getMeetingsStatusColor(status)
@@ -108,13 +108,7 @@ class DataContainer {
 
     buildMessageItem(item)
     {
-        var content = item.content;
-        content = content.split("href='app").join("href='" + window.CONFIG.siteUrl + "/app");
-        content = content.split('href="app').join('href="' + window.CONFIG.siteUrl + '/app');
-        content = content.split('_self|_blank|_parent|_top').join('_system');
-        content = content.split("target='_system'").join("");
-        content = content.split("href").join("target='_system' href");
-
+        var content = Helper.changeUrlToGlobal(item.content);
         content += "<br/>";
         content += self.chatTemplate(item);
         content += self.readTemplate(item);
