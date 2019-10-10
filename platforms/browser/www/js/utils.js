@@ -35,12 +35,11 @@ class Helper {
         $('a').each(function (index, element)
         {
             var href = $(element).attr('href');
-            if (href.indexOf(CONFIG.siteUrl) != -1 && href.indexOf('&p=') != -1)
+            if (!href.startsWith("#") && href.indexOf('&p=') == -1)
             {
                 $(element).attr('href', Helper.addAuthToUrl(href));
             }
         });
     }
-
 }
 

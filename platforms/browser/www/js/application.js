@@ -79,12 +79,8 @@ class App {
             });
     }
 
-    loadTemplates()
+    loadTemplates(callback)
     {
-        $('#template-container').load('template.html');
+        $('#template-container').load('template.html', callback);
     }
 }
-
-var app = new App();
-
-

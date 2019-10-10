@@ -89,7 +89,3 @@ class ChatList {
         this.updateChatListContainer();
     }
 }
-
-var chatList = new ChatList();
-
-

@@ -33,7 +33,7 @@
 </script>
 
 <script id="chat-item-template" type="text/x-handlebars-template">
-    <li class="{{style}}">
+    <li class="{{style}}" data-id="{{notificationId}}">
         <div>
             <p class="chat-message-header">{{subject}}</p>
             <p class="chat-message-content">{{encode message}}</p>

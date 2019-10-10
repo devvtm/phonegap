@@ -1,5 +1,8 @@
 var CONFIG = {
 
+    // Settings
+    messageRefreshTime: 10 * 1000,
+
     // MobileAppController
     siteUrl : null,
     loginUrl: null,

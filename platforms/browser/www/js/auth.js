@@ -82,7 +82,3 @@ class Auth {
             });
     }
 }
-
-var auth = new Auth();
-
-

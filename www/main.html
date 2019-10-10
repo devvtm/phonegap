@@ -26,33 +26,39 @@
     <script type="text/javascript" src="js/handlebars-v4.3.1.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/bootstrap-toggle.js"></script>
+
+    <script type="text/javascript" src="js/application.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/auth.js"></script>
     <script type="text/javascript" src="js/chat.js"></script>
     <script type="text/javascript" src="js/chat_list.js"></script>
-    <script type="text/javascript" src="js/chat_layout.js"></script>
-    <script type="text/javascript" src="js/menu.js"></script>
     <script type="text/javascript" src="js/onesignal.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function ()
         {
-            CONFIG.initConfig();
-            app.loadTemplates();
-
-            if (localStorage.getItem('userId') == null)
+            window.application = new App();
+            application.loadTemplates(function ()
             {
-                CONFIG.loadPage("index");
-            }
-            else
-            {
-                container.loadData();
-            }
+                window.container = new DataContainer();
+                window.auth = new Auth();
+                window.chat = new Chat();
+                window.chatList = new ChatList();
 
-            app.buildLeftMenu();
-            app.applySettings();
+                CONFIG.initConfig();
 
-            chat.loadChat(65, "Милованова");
+                if (localStorage.getItem('userId') == null)
+                {
+                    CONFIG.loadPage("index");
+                }
+                else
+                {
+                    container.loadData();
+                }
+
+                application.buildLeftMenu();
+                application.applySettings();
+            });
         });
     </script>
 </head>
@@ -92,7 +98,7 @@
                 </a>
             </li>
             <li>
-                <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false" onclick="app.applySettings()">
+                <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false" onclick="application.applySettings()">
                     Настройки
                 </a>
             </li>
@@ -144,8 +150,8 @@
                         <div class="message-input">
                             <div class="wrap">
                                 <textarea id="message-field" type="text" placeholder="Введите сообщение"></textarea>
-                                <button class="button attachment-button"><i class="fa fa-paperclip fa-2x" onclick="chat.addAttachment()"></i></button>
-                                <button class="submit create-message-button"><i class="fa fa-share fa-2x" onclick="chat.sendMessage()"></i></button>
+                                <button class="button btn btn-success attachment-button"><i class="fa fa-paperclip fa-2x" onclick="chat.addAttachment()"></i></button>
+                                <button class="submit btn btn-success create-message-button"><i class="fa fa-share fa-2x" onclick="chat.sendMessage()"></i></button>
                             </div>
                         </div>
                     </div>
@@ -195,7 +201,7 @@
                             Запретить все уведомления
                         </label>
                     </div>
-                    <button type="button" class="save-settings-btn btn btn-success" onclick="app.changeSettings()">Сохранить</button>
+                    <button type="button" class="save-settings-btn btn btn-success" onclick="application.changeSettings()">Сохранить</button>
                 </div>
 
             </div>

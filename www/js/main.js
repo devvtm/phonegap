@@ -2,14 +2,22 @@ class DataContainer {
 
     initTemplates()
     {
-        var source = document.getElementById("button-chat-template").innerHTML;
-        self.chatTemplate = Handlebars.compile(source);
+        var templateElement = null;
 
-        source = document.getElementById("button-read-template").innerHTML;
-        self.readTemplate = Handlebars.compile(source);
+        if (templateElement = document.getElementById("button-chat-template"))
+        {
+            self.chatTemplate = Handlebars.compile(templateElement.innerHTML);
+        }
 
-        source = document.getElementById("meeting-item-template").innerHTML;
-        self.meetingTemplate = Handlebars.compile(source);
+        if (templateElement = document.getElementById("button-read-template"))
+        {
+            self.readTemplate = Handlebars.compile(templateElement.innerHTML);
+        }
+
+        if (templateElement = document.getElementById("meeting-item-template"))
+        {
+            self.meetingTemplate = Handlebars.compile(templateElement.innerHTML);
+        }
     }
 
     loadData()
@@ -116,5 +124,3 @@ class DataContainer {
         return "<tr><td>" + content + "</td></tr>";
     }
 }
-
-var container = new DataContainer();

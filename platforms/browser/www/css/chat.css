@@ -524,8 +524,8 @@ table {
 }
 
 .frame .content .messages ul li.sent div {
-    background: #435f7a;
-    color: #f5f5f5;
+    background: #dfe2d5;
+    color: #000000;
 }
 
 .frame .content .messages ul li.replies img {
@@ -605,6 +605,7 @@ table {
     cursor: pointer;
     background: transparent;
     color: black;
+    border-radius: 0px;
 }
 
 .frame .content .message-input .wrap button:hover {
@@ -649,4 +650,9 @@ table {
     color: #1f9fd1;
     text-align: right;
     margin-top: 10px;
+}
+
+#message-field
+{
+    padding: 5px;
 }
