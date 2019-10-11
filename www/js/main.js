@@ -23,8 +23,7 @@ class DataContainer {
     loadData()
     {
         var context = this;
-        var $spinner = $('#spinner');
-        $spinner.removeClass('display-none');
+        application.showLoading();
 
         $.post(CONFIG.dataUrl,
             {
@@ -36,7 +35,8 @@ class DataContainer {
                 context.updateMeetingsContainer(data.meetings);
                 context.updateMessagesContainer(data.messages);
                 context.updateLinks();
-                $spinner.addClass('display-none');
+                application.clearPullDownToRefresh();
+                application.hideLoading();
             });
     }
 

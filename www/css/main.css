@@ -181,6 +181,20 @@ html {
     box-shadow: none;
 }
 
+.back-btn
+{
+    position: relative;
+    margin-left: 15px;
+    z-index: 999;
+    display: inline-flex;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    font-size: 40px;
+    color: black;
+}
+
 /* Hamburger-Cross */
 .hamburger {
     position: relative;

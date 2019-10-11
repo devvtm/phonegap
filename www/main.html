@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap_3.3.7.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap-toggle.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/loading.css">
 
     <!-- Scripts -->
     <script type="text/javascript" src="cordova.js"></script>
@@ -33,11 +34,14 @@
     <script type="text/javascript" src="js/chat.js"></script>
     <script type="text/javascript" src="js/chat_list.js"></script>
     <script type="text/javascript" src="js/onesignal.js"></script>
+    <script type="text/javascript" src="js/pulldowntorefresh.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function ()
         {
             window.application = new App();
+            application.disableBackButton();
+            application.initPullDownToRefresh();
             application.loadTemplates(function ()
             {
                 window.container = new DataContainer();
@@ -111,17 +115,22 @@
     </nav>
     <!-- /#sidebar-wrapper -->
 
-    <!-- Page Content -->
+    <!-- Заголовок -->
     <div id="page-content-wrapper">
         <div class="page-header-container">
-            <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+            <button type="button" id="menu-btn" class="hamburger is-closed" data-toggle="offcanvas">
                 <span class="hamb-top"></span>
                 <span class="hamb-middle"></span>
                 <span class="hamb-bottom"></span>
             </button>
 
+            <span id="chat-back-btn" class="back-btn" style="display: none">
+                    <i class="fa fa-chevron-left"></i>
+            </span>
+
             <div class="top-header">
-                <img src="img/logo.png"/><span class="top-header-logo">ВТМ Дорпроект</span>
+                <img src="img/logo.png"/>
+                <span class="top-header-logo">ВТМ Дорпроект</span>
             </div>
         </div>
 
@@ -129,7 +138,9 @@
             <div class="tab-pane fade show active" id="messages" role="tabpanel" aria-labelledby="messages-tab">
                 <!--Сообщения-->
                 <div class="chat-icon">
-                    <button type="button" class="btn btn-success" onclick="chatList.loadChatList()"><i class="fa fa-comments fa-3x"></i></button>
+                    <button type="button" class="btn btn-success" onclick="chatList.loadChatList()">
+                        <i class="fa fa-comments fa-3x"></i>
+                    </button>
                 </div>
                 <table class="table table-striped">
                     <tbody id="messages-table">
@@ -225,6 +236,9 @@
         </div>
     </div>
 </div>
+
+
+<div class="loading-container"></div>
 
 </body>
 </html>

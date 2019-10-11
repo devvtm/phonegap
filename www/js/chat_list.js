@@ -44,6 +44,9 @@ class ChatList {
 
         $('#chat-list-tab').tab('show');
 
+        context.clearFilter();
+        application.showLoading();
+
         $.post(CONFIG.getResourcesUrl,
             {
                 currentUserId: currentUserId
@@ -52,6 +55,8 @@ class ChatList {
             {
                 context.users = users;
                 context.updateChatListContainer();
+                application.hideLoading();
+                application.clearPullDownToRefresh();
             });
     }
 
@@ -62,7 +67,7 @@ class ChatList {
         var template = Handlebars.compile(source);
 
         var $contacts = $('#contacts-list');
-        $contacts.html('');
+        $contacts.empty();
 
         context.users.forEach(function (el)
         {

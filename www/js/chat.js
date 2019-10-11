@@ -2,10 +2,24 @@ class Chat {
 
     constructor()
     {
-        $(document).on('click', '#send-message', function (e, item)
+        var context = this;
+
+        $('#send-message').on('click', function ()
         {
-            chat.sendMessage();
+            context.sendMessage();
         });
+
+        $("#menu").find("a").click(function (e)
+        {
+            context.clearRefreshListener();
+        });
+
+        $('#chat-back-btn').on('click', function()
+        {
+            $('#chat-list-tab').tab('show');
+            $('#chat-back-btn').hide();
+            $('#menu-btn').show();
+        })
     }
 
     initTemplate()
@@ -23,24 +37,37 @@ class Chat {
     {
         var context = this;
 
-        if (id != null)
-        {
-            localStorage.setItem('withResourceId', id);
-        }
-
-        $('#chat-tab').tab('show');
-        $('#chat-name').text(name);
-
+        localStorage.setItem('withResourceId', id);
+        localStorage.setItem('chatName', name);
         var now = new Date();
         var end = Date.now();
         var start = now.setDate(now.getDate() - 30);
+        this.changeUI(name);
         this.clearChatContainer();
+        this.clearRefreshListener();
+        application.showLoading();
         this.loadMessages(start, end, function ()
         {
             localStorage.setItem('chatDateStart', start);
             localStorage.setItem('chatDateEnd', end);
             context.initRefreshListener();
+            application.hideLoading();
         });
+    }
+
+    reloadChat()
+    {
+        var id = localStorage.getItem('withResourceId');
+        var name = localStorage.getItem('chatName');
+        this.loadChat(id, name);
+    }
+
+    changeUI(chatName)
+    {
+        $('#chat-tab').tab('show');
+        $('#chat-name').text(chatName);
+        $('#menu-btn').hide();
+        $('#chat-back-btn').show();
     }
 
     loadMessages(start, end, callback)

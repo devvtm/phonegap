@@ -1,5 +1,66 @@
 class App {
 
+    pullDownToRefresh = null;
+
+    disableBackButton()
+    {
+        document.addEventListener("backbutton", function (e)
+        {
+            e.preventDefault();
+        }, false);
+
+        history.pushState(null, null, window.location.href);
+        window.onpopstate = function ()
+        {
+            history.go(1);
+        };
+    }
+
+    initPullDownToRefresh()
+    {
+        var context = this;
+
+        PullToRefresh.init({
+            mainElement: '#myTabContent',
+            onRefresh: function (pullDownToRefresh) {
+                context.pullDownToRefresh = pullDownToRefresh;
+
+                var tab = $("ul#menu li a.active").attr('id');
+
+                switch (tab)
+                {
+                    case 'messages-tab':
+                    case 'meetings-tab':
+                    {
+                        container.loadData();
+                        break;
+                    }
+
+                    case 'chat-list-tab':
+                    {
+                        chatList.loadChatList();
+                        break;
+                    }
+
+                    case 'chat-tab':
+                    {
+                        chat.reloadChat();
+                        break;
+                    }
+                }
+            }
+        });
+    }
+
+    clearPullDownToRefresh()
+    {
+        if (this.pullDownToRefresh)
+        {
+            this.pullDownToRefresh();
+            this.pullDownToRefresh = undefined;
+        }
+    }
+
     buildLeftMenu()
     {
         var context = this;
@@ -83,4 +144,15 @@ class App {
     {
         $('#template-container').load('template.html', callback);
     }
+
+    showLoading()
+    {
+        $('body').addClass('loading');
+    }
+
+    hideLoading()
+    {
+        $('body').removeClass('loading');
+    }
+
 }

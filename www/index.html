@@ -18,11 +18,13 @@
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/popper.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/login.js" ></script>
     <script type="text/javascript">
         app.initialize();
 
         $(document).ready(function(){
+
+            window.auth = new Auth();
+
             var userId = localStorage.getItem('userId');
 
             if (userId != null)
