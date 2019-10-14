@@ -1,5 +1,7 @@
 class Chat {
 
+    fileHelper = null;
+
     constructor()
     {
         var context = this;
@@ -14,12 +16,19 @@ class Chat {
             context.clearRefreshListener();
         });
 
-        $('#chat-back-btn').on('click', function()
+        $('#chat-back-btn').on('click', function ()
         {
             $('#chat-list-tab').tab('show');
             $('#chat-back-btn').hide();
             $('#menu-btn').show();
-        })
+        });
+
+        $('#file-choose-clear-btn').on('click', function ()
+        {
+            context.clearFilesContainer();
+        });
+
+        context.initFilesContainer();
     }
 
     initTemplate()
@@ -43,7 +52,9 @@ class Chat {
         var end = Date.now();
         var start = now.setDate(now.getDate() - 30);
         this.changeUI(name);
+        this.initFilesContainer();
         this.clearChatContainer();
+        this.clearFilesContainer();
         this.clearRefreshListener();
         application.showLoading();
         this.loadMessages(start, end, function ()
@@ -85,6 +96,7 @@ class Chat {
             },
             function (data, status)
             {
+                console.log(data);
                 context.updateChatContainer(data);
                 callback();
             });
@@ -132,6 +144,20 @@ class Chat {
         $('.messages ul').empty();
     }
 
+    initFilesContainer()
+    {
+        var inputElement = document.querySelector('#file-choose-input');
+        this.fileHelper = FilePond.create(inputElement);
+    }
+
+    clearFilesContainer()
+    {
+        if (this.fileHelper)
+        {
+            this.fileHelper.removeFiles();
+        }
+    }
+
     updateChatContainer(items)
     {
         var context = this;
@@ -171,19 +197,36 @@ class Chat {
         var currentUserId = localStorage.getItem('userId');
         var withResourceId = localStorage.getItem('withResourceId');
 
-        $.post(CONFIG.createMessageUrl,
-            {
-                fromUserId: currentUserId,
-                toUserId: withResourceId,
-                parentNotificationId: context.getLastNotificationId(),
-                message: $field.val()
-            },
-            function (item, status)
+        var formData = new FormData();
+        formData.append('fromUserId', currentUserId);
+        formData.append('toUserId', withResourceId);
+        formData.append('parentNotificationId', context.getLastNotificationId());
+        formData.append('message', $field.val());
+
+        var files = this.fileHelper.getFiles();
+
+        for (var i = 0; i < files.length; ++i)
+        {
+            var file = files[i].file;
+            formData.append('file', file, file.name);
+        }
+
+        $.ajax({
+            url: CONFIG.createMessageUrl,
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+
+            success: function (item)
             {
                 context.addMessage(item);
                 context.scrollToLastMessage();
+                context.clearFilesContainer();
                 $field.val(null);
-            });
+            }
+        });
     }
 
     getLastNotificationId()
@@ -205,6 +248,6 @@ class Chat {
 
     addAttachment()
     {
-
+        $('#file-choose-modal').modal('show');
     }
 }

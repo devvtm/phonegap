@@ -140,9 +140,10 @@ class App {
             });
     }
 
-    loadTemplates(callback)
+    includeFiles(callback)
     {
         $('#template-container').load('template.html', callback);
+        $('#modal-container').load('modal.html');
     }
 
     showLoading()

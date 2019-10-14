@@ -44,6 +44,13 @@
             {{#if linkCaption}}
             <a href="{{setAuth linkHref}}" role="button" class="btn btn-success width100">{{linkCaption}}</a>
             {{/if}}
+
+            {{#each files}}
+                <a class="chat-message-file" href="{{link}}">
+                    <i class='fa fa-file'> {{name}}</i>
+                </a>
+            {{~/each}}
+
             <p class="chat-message-footer">{{date}}</p>
         </div>
     </li>

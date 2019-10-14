@@ -13,7 +13,14 @@ class Helper {
     {
         if (url.indexOf('&p=') == -1)
         {
-            url = url + "/?l=" + localStorage.getItem('login') + "&p=" + localStorage.getItem('password');
+            if (url.indexOf('?') == -1)
+            {
+                url = url + "/?l=" + localStorage.getItem('login') + "&p=" + localStorage.getItem('password');
+            }
+            else
+            {
+                url = url + "&l=" + localStorage.getItem('login') + "&p=" + localStorage.getItem('password');
+            }
         }
 
         return url;

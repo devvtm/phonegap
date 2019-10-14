@@ -1,7 +1,7 @@
 var CONFIG = {
 
     // Settings
-    messageRefreshTime: 3 * 1000,
+    messageRefreshTime: 20 * 1000,
 
     // MobileAppController
     siteUrl: null,
@@ -47,20 +47,20 @@ var CONFIG = {
             }
         }
 
-        this.loginUrl = this.siteUrl + "/mobileapp/login";
-        this.logoutUrl = this.siteUrl + "/mobileapp/logout";
-        this.dataUrl = this.siteUrl + "/mobileapp/loadData";
-        this.subscribeUrl = this.siteUrl + "/mobileapp/subscribeDevice";
-        this.messageReadUrl = this.siteUrl + "/mobileapp/messageRead";
-        this.meetingUrl = this.siteUrl + "/app#NewMeetingChart/meetingChart=";
-        this.getSettingsUrl = this.siteUrl + "/mobileapp/getSettings";
-        this.changeSettingsUrl = this.siteUrl + "/mobileapp/changeSettings";
+        this.loginUrl = this.siteUrl + "mobileapp/login";
+        this.logoutUrl = this.siteUrl + "mobileapp/logout";
+        this.dataUrl = this.siteUrl + "mobileapp/loadData";
+        this.subscribeUrl = this.siteUrl + "mobileapp/subscribeDevice";
+        this.messageReadUrl = this.siteUrl + "mobileapp/messageRead";
+        this.meetingUrl = this.siteUrl + "app#NewMeetingChart/meetingChart=";
+        this.getSettingsUrl = this.siteUrl + "mobileapp/getSettings";
+        this.changeSettingsUrl = this.siteUrl + "mobileapp/changeSettings";
 
-        this.getChatUrl = this.siteUrl + "/mobileappmessage/getChat";
-        this.createMessageUrl = this.siteUrl + "/mobileappmessage/createMessage";
-        this.getResourcesUrl = this.siteUrl + "/mobileappmessage/getResources";
+        this.getChatUrl = this.siteUrl + "mobileappmessage/getChat";
+        this.createMessageUrl = this.siteUrl + "mobileappmessage/createMessage";
+        this.getResourcesUrl = this.siteUrl + "mobileappmessage/getResources";
 
-        this.getUserImageUrl = this.siteUrl + "/media/getUserImage";
+        this.getUserImageUrl = this.siteUrl + "media/getUserImage";
     },
 
     loadPage: function (page)

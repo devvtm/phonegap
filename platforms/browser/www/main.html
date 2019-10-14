@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap-toggle.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/loading.css">
+    <link rel="stylesheet" type="text/css" href="css/fileupload.css">
 
     <!-- Scripts -->
     <script type="text/javascript" src="cordova.js"></script>
@@ -35,6 +36,7 @@
     <script type="text/javascript" src="js/chat_list.js"></script>
     <script type="text/javascript" src="js/onesignal.js"></script>
     <script type="text/javascript" src="js/pulldowntorefresh.js"></script>
+    <script type="text/javascript" src="js/fileupload.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function ()
@@ -42,7 +44,7 @@
             window.application = new App();
             application.disableBackButton();
             application.initPullDownToRefresh();
-            application.loadTemplates(function ()
+            application.includeFiles(function ()
             {
                 window.container = new DataContainer();
                 window.auth = new Auth();
@@ -68,7 +70,6 @@
 </head>
 
 <body>
-<div id="template-container"></div>
 <div id="wrapper">
     <div class="overlay"></div>
 
@@ -223,22 +224,9 @@
 </div>
 <!-- /#wrapper -->
 
-<!--Модальное окно-->
-<div id="success-modal" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Операция выполнена успешно</h5>
-                <button type="button" class="close success-close-btn" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="loading-container"></div>
+<div id="loading-container"></div>
+<div id="template-container"></div>
+<div id="modal-container"></div>
 
 </body>
 </html>
