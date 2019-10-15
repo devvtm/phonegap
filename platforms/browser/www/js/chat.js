@@ -1,6 +1,7 @@
 class Chat {
 
     fileHelper = null;
+    refreshListener = null;
 
     constructor()
     {
@@ -21,6 +22,7 @@ class Chat {
             $('#chat-list-tab').tab('show');
             $('#chat-back-btn').hide();
             $('#menu-btn').show();
+            chatList.loadChatList();
         });
 
         $('#file-choose-clear-btn').on('click', function ()
@@ -60,9 +62,10 @@ class Chat {
         this.loadMessages(start, end, function ()
         {
             localStorage.setItem('chatDateStart', start);
-            localStorage.setItem('chatDateEnd', end);
+            context.changeLastTimeUpdate(end);
             context.initRefreshListener();
             application.hideLoading();
+            application.clearPullDownToRefresh();
         });
     }
 
@@ -102,28 +105,39 @@ class Chat {
             });
     }
 
+    loadLastNewMessages()
+    {
+        var context = this;
+        var end = Date.now();
+        var start = localStorage.getItem('chatDateEnd');
+
+        context.loadMessages(start, end, function ()
+        {
+            context.changeLastTimeUpdate(end);
+        });
+    }
+
+    changeLastTimeUpdate(end)
+    {
+        localStorage.setItem('chatDateEnd', end + 1000);
+    }
+
     initRefreshListener()
     {
         var context = this;
 
-        self.refreshListener = setInterval(function ()
+        this.refreshListener = setInterval(function ()
         {
-            var end = Date.now();
-            var start = localStorage.getItem('chatDateEnd');
-
-            context.loadMessages(start, end, function ()
-            {
-                localStorage.setItem('chatDateEnd', end);
-            });
+            context.loadLastNewMessages();
 
         }, CONFIG.messageRefreshTime);
     }
 
     clearRefreshListener()
     {
-        if (self.refreshListener)
+        if (this.refreshListener)
         {
-            clearInterval(self.refreshListener)
+            clearInterval(this.refreshListener)
         }
     }
 
@@ -150,12 +164,37 @@ class Chat {
         this.fileHelper = FilePond.create(inputElement);
     }
 
+    hideFileModalWindow()
+    {
+        $('#file-choose-modal').modal('hide');
+        this.updateFileCountLabel();
+    }
+
     clearFilesContainer()
     {
         if (this.fileHelper)
         {
             this.fileHelper.removeFiles();
         }
+
+        this.updateFileCountLabel();
+    }
+
+    updateFileCountLabel()
+    {
+        var count = '';
+
+        if (this.fileHelper)
+        {
+            count = this.fileHelper.getFiles().length;
+
+            if (count == '0')
+            {
+                count = '';
+            }
+        }
+
+        $('#file-count-label').text(count);
     }
 
     updateChatContainer(items)
@@ -167,7 +206,7 @@ class Chat {
         {
             items.forEach(function (item)
             {
-                context.addMessage(item);
+                context.addMessageToContainer(item);
             });
         }
 
@@ -175,7 +214,7 @@ class Chat {
         this.scrollToLastMessage();
     }
 
-    addMessage(item)
+    addMessageToContainer(item)
     {
         item.message = Helper.changeUrlToGlobal(item.message);
         item.style = item.reply ? 'replies' : 'sent';
@@ -191,7 +230,7 @@ class Chat {
 
         if ($.trim(message) == '')
         {
-            return false;
+            return Helper.showNotification('Введите текст сообщения');
         }
 
         var currentUserId = localStorage.getItem('userId');
@@ -221,8 +260,9 @@ class Chat {
 
             success: function (item)
             {
-                context.addMessage(item);
-                context.scrollToLastMessage();
+                context.clearRefreshListener();
+                context.loadLastNewMessages();
+                context.initRefreshListener();
                 context.clearFilesContainer();
                 $field.val(null);
             }

@@ -48,5 +48,11 @@ class Helper {
             }
         });
     }
+
+    static showNotification(message)
+    {
+        $('#notification-popup #modal-title').text(message);
+        $('#notification-popup').modal('show');
+    }
 }
 

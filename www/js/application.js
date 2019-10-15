@@ -136,7 +136,7 @@ class App {
             },
             function (json, status)
             {
-                $('#success-modal').modal('show');
+                Helper.showNotification('Операция выполнена успешно');
             });
     }
 

@@ -69,12 +69,16 @@ class ChatList {
         var $contacts = $('#contacts-list');
         $contacts.empty();
 
+        context.users.sort((a,b) => (a.count < b.count) ? 1 : ((a.count > b.count) ? -1 : 0));
+
         context.users.forEach(function (el)
         {
             if (context.filter != null && el.name.toLowerCase().indexOf(context.filter.toLowerCase()) == -1)
             {
                 return;
             }
+
+            el.countStyle = el.count > 0 ? "fa fa-comment" : "hide";
 
             var child = template(el);
             $contacts.append(child);
