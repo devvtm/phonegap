@@ -21,7 +21,12 @@ class Chat {
         {
             $('#chat-list-tab').tab('show');
             $('#chat-back-btn').hide();
-            $('#menu-btn').show();
+
+            if (Helper.isMobile())
+            {
+                $('#menu-btn').show();
+            }
+
             chatList.loadChatList();
         });
 

@@ -20,9 +20,10 @@
 
     <!-- Scripts -->
     <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/utils.js"></script>
+    <script type="text/javascript" src="js/desktop.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/config.js"></script>
-    <script type="text/javascript" src="js/utils.js"></script>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/popper.js"></script>
     <script type="text/javascript" src="js/handlebars-v4.3.1.js"></script>
@@ -39,8 +40,10 @@
     <script type="text/javascript" src="js/fileupload.js"></script>
 
     <script type="text/javascript">
+
         $(document).ready(function ()
         {
+            Desktop.initLocalStorageData();
             window.application = new App();
             application.disableBackButton();
             application.initPullDownToRefresh();
@@ -57,13 +60,16 @@
                 {
                     CONFIG.loadPage("index");
                 }
-                else
+                else if (Helper.isMobile())
                 {
                     container.loadData();
+                    application.buildLeftMenu();
+                    application.applySettings();
                 }
-
-                application.buildLeftMenu();
-                application.applySettings();
+                else
+                {
+                    Desktop.initDesktopPage();
+                }
             });
         });
     </script>
@@ -129,8 +135,8 @@
                     <i class="fa fa-chevron-left"></i>
             </span>
 
-            <div class="top-header">
-                <img src="img/logo.png"/>
+            <div id='top-header-label' class="top-header">
+                <img src="images/logo.png"/>
                 <span class="top-header-logo">ВТМ Дорпроект</span>
             </div>
         </div>
