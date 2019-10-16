@@ -1,8 +1,8 @@
 var CONFIG = {
 
     // Settings
-    messageRefreshTime: 5 * 1000,
-    chatListRefreshTime: 5 * 1000,
+    messageRefreshTime: 60 * 1000,
+    chatListRefreshTime: 300 * 1000,
 
     // MobileAppController
     siteUrl: null,

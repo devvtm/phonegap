@@ -106,7 +106,7 @@ class Chat {
             function (data, status)
             {
                 context.updateChatContainer(data);
-                callback();
+                callback(data);
             });
     }
 
@@ -116,9 +116,21 @@ class Chat {
         var end = Date.now();
         var start = localStorage.getItem('chatDateEnd');
 
-        context.loadMessages(start, end, function ()
+        context.loadMessages(start, end, function (newMessages)
         {
             context.changeLastTimeUpdate(end);
+
+            if (newMessages)
+            {
+                for (var i = 0; i < newMessages.length; ++i)
+                {
+                    if (newMessages[i].reply)
+                    {
+                        Helper.playSoundAboutNewMessage();
+                        break;
+                    }
+                }
+            }
         });
     }
 

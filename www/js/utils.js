@@ -66,5 +66,17 @@ class Helper {
 
         return check;
     }
+
+    static playSoundAboutNewMessage()
+    {
+        var sound = new Howl({
+            src: [CONFIG.newMessageAudioUrl],
+            volume: 0.5,
+            onend: function ()
+            {
+            }
+        });
+        sound.play()
+    }
 }
 

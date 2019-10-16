@@ -63,12 +63,13 @@ class ChatList {
             function (users, status)
             {
                 context.users = users;
-                context.updateChatListContainer();
+                var newMessagesCount = context.updateChatListContainer();
                 context.initRefreshListener();
 
-                if (context.newMessagesCount > 0)
+                if (newMessagesCount > 0 && context.newMessagesCount != newMessagesCount)
                 {
-                    context.playSoundAboutNewMessage();
+                    Helper.playSoundAboutNewMessage();
+                    context.newMessagesCount = newMessagesCount;
                 }
 
                 application.hideLoading();
@@ -88,10 +89,10 @@ class ChatList {
 
         context.users.sort((a, b) => (a.count < b.count) ? 1 : ((a.count > b.count) ? -1 : 0));
 
-        context.newMessagesCount = 0;
+        var newMessagesCount = 0;
         context.users.forEach(function (el)
         {
-            context.newMessagesCount += el.count;
+            newMessagesCount += el.count;
             if (context.filter != null && el.name.toLowerCase().indexOf(context.filter.toLowerCase()) == -1)
             {
                 return;
@@ -103,52 +104,7 @@ class ChatList {
         });
 
         context.loadUserProfileImages();
-    }
-
-    updateChatListNewMessages()
-    {
-        var context = this;
-        var currentUserId = localStorage.getItem('userId');
-        var source = document.getElementById("contact-template").innerHTML;
-        var template = Handlebars.compile(source);
-
-        $.post(CONFIG.getResourcesUrl,
-            {
-                currentUserId: currentUserId
-            },
-            function (users, status)
-            {
-                var messagesCount = 0;
-                context.users = users;
-                context.users.sort((a, b) => (a.count > b.count) ? 1 : ((a.count < b.count) ? -1 : 0));
-                context.users.forEach(function (el)
-                {
-                    messagesCount += el.count;
-                    el.countStyle = el.count > 0 ? "new-message-count" : "hide";
-
-                    var $contact = $('li.contact[data-id=' + el.id + ']');
-
-                    if ($contact)
-                    {
-                        if (el.count > 0)
-                        {
-                            var $contacts = $('#contacts-list');
-                            $contacts.remove
-                            $contact.prependTo('#contacts-list')
-                        }
-                        else
-                        {
-                            $contact.replaceWith(template(el));
-                        }
-                    }
-                });
-
-                if (messagesCount > 0 && context.newMessagesCount != messagesCount)
-                {
-                    context.newMessagesCount = messagesCount;
-                    context.playSoundAboutNewMessage();
-                }
-            });
+        return newMessagesCount;
     }
 
     applyFilter()
@@ -175,25 +131,13 @@ class ChatList {
         );
     }
 
-    playSoundAboutNewMessage()
-    {
-        var sound = new Howl({
-            src: [CONFIG.newMessageAudioUrl],
-            volume: 0.5,
-            onend: function ()
-            {
-            }
-        });
-        sound.play()
-    }
-
     initRefreshListener()
     {
         var context = this;
 
         this.refreshListener = setInterval(function ()
         {
-            context.updateChatListNewMessages();
+            context.loadChatList();
 
         }, CONFIG.chatListRefreshTime);
     }
