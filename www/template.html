@@ -3,16 +3,18 @@
         <div class="wrap">
             <div class="image-wrap">
                 {{#if group}}
-                    <img src="images/group.png" alt=""/>
+                <img src="images/group.png" alt=""/>
                 {{^}}
-                    <img src="images/profile.png" data-lazysrc="{{id}}" alt=""/>
+                <img src="images/profile.png" data-lazysrc="{{id}}" alt=""/>
                 {{/if}}
             </div>
             <div class="meta">
                 <p class="name">{{name}}</p>
                 <p class="description">{{description}}</p>
             </div>
-            <i class="{{countStyle}} new-message-count" aria-hidden="true"> {{count}}</i>
+            <div class="new-message-count-container {{countStyle}}">
+                <i class="new-message-count-label" aria-hidden="true"> {{count}}</i>
+            </div>
         </div>
     </li>
 </script>
@@ -47,9 +49,9 @@
             {{/if}}
 
             {{#each files}}
-                <a class="chat-message-file" href="{{link}}">
-                    <i class='fa fa-file'> {{name}}</i>
-                </a>
+            <a class="chat-message-file" href="{{link}}">
+                <i class='fa fa-file'> {{name}}</i>
+            </a>
             {{~/each}}
 
             <p class="chat-message-footer">{{date}}</p>
@@ -67,7 +69,8 @@
         );
     });
 
-    Handlebars.registerHelper('encode',function(inputData){
+    Handlebars.registerHelper('encode', function (inputData)
+    {
         return new Handlebars.SafeString(inputData);
     });
 </script>

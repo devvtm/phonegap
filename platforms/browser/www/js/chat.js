@@ -28,6 +28,7 @@ class Chat {
             }
 
             chatList.loadChatList();
+            context.clearRefreshListener();
         });
 
         $('#file-choose-clear-btn').on('click', function ()
@@ -104,7 +105,6 @@ class Chat {
             },
             function (data, status)
             {
-                console.log(data);
                 context.updateChatContainer(data);
                 callback();
             });
@@ -125,6 +125,20 @@ class Chat {
     changeLastTimeUpdate(end)
     {
         localStorage.setItem('chatDateEnd', end + 1000);
+
+        var currentUserId = localStorage.getItem('userId');
+        var withResourceId = localStorage.getItem('withResourceId');
+        var chatDateEnd = localStorage.getItem('chatDateEnd');
+
+        $.post(CONFIG.setMessagesReadUrl,
+            {
+                currentUserId: currentUserId,
+                withUserId: withResourceId,
+                sendDate: chatDateEnd
+            },
+            function (data, status)
+            {
+            });
     }
 
     initRefreshListener()

@@ -5,9 +5,6 @@ class Desktop {
         {
             return;
         }
-
-        localStorage.setItem('userId', 1);
-        localStorage.setItem('server', 'VTM');
     }
 
     static initDesktopPage()

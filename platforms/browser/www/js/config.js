@@ -1,7 +1,8 @@
 var CONFIG = {
 
     // Settings
-    messageRefreshTime: 20 * 1000,
+    messageRefreshTime: 5 * 1000,
+    chatListRefreshTime: 5 * 1000,
 
     // MobileAppController
     siteUrl: null,
@@ -18,9 +19,13 @@ var CONFIG = {
     getChatUrl: null,
     createMessageUrl: null,
     getResourcesUrl: null,
+    setMessagesReadUrl: null,
 
     // MediaController
     getUserImageUrl: null,
+
+    // Audio
+    newMessageAudioUrl: null,
 
 
     initConfig: function ()
@@ -32,7 +37,7 @@ var CONFIG = {
             case "VTM":
             {
                 //this.siteUrl = "https://proj.vtm-dorproekt.ru:9443/";
-                this.siteUrl = "http://192.168.0.104:8090/";
+                this.siteUrl = "http://127.0.0.1:8090/";
                 break;
             }
             case "IKPAD":
@@ -47,20 +52,28 @@ var CONFIG = {
             }
         }
 
-        this.loginUrl = this.siteUrl + "mobileapp/login";
-        this.logoutUrl = this.siteUrl + "mobileapp/logout";
-        this.dataUrl = this.siteUrl + "mobileapp/loadData";
-        this.subscribeUrl = this.siteUrl + "mobileapp/subscribeDevice";
-        this.messageReadUrl = this.siteUrl + "mobileapp/messageRead";
-        this.meetingUrl = this.siteUrl + "app#NewMeetingChart/meetingChart=";
-        this.getSettingsUrl = this.siteUrl + "mobileapp/getSettings";
-        this.changeSettingsUrl = this.siteUrl + "mobileapp/changeSettings";
+        this.loginUrl = this.buildAction("mobileapp/login");
+        this.logoutUrl = this.buildAction("mobileapp/logout");
+        this.dataUrl = this.buildAction("mobileapp/loadData");
+        this.subscribeUrl = this.buildAction("mobileapp/subscribeDevice");
+        this.messageReadUrl = this.buildAction("mobileapp/messageRead");
+        this.meetingUrl = this.buildAction("app#NewMeetingChart/meetingChart=");
+        this.getSettingsUrl = this.buildAction("mobileapp/getSettings");
+        this.changeSettingsUrl = this.buildAction("mobileapp/changeSettings");
 
-        this.getChatUrl = this.siteUrl + "mobileappmessage/getChat";
-        this.createMessageUrl = this.siteUrl + "mobileappmessage/createMessage";
-        this.getResourcesUrl = this.siteUrl + "mobileappmessage/getResources";
+        this.getChatUrl = this.buildAction("mobileappmessage/getChat");
+        this.createMessageUrl = this.buildAction("mobileappmessage/createMessage");
+        this.getResourcesUrl = this.buildAction("mobileappmessage/getResources");
+        this.setMessagesReadUrl = this.buildAction("mobileappmessage/setMessagesRead");
 
-        this.getUserImageUrl = this.siteUrl + "media/getUserImage";
+        this.getUserImageUrl = this.buildAction("media/getUserImage");
+        this.newMessageAudioUrl = this.buildAction("audio/message.mp3")
+
+    },
+
+    buildAction: function (url)
+    {
+        return this.siteUrl + url;
     },
 
     loadPage: function (page)

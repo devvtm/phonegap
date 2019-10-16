@@ -19,8 +19,13 @@
     <link rel="stylesheet" type="text/css" href="css/fileupload.css">
 
     <!-- Scripts -->
-    <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/utils.js"></script>
+    <script type="text/javascript">
+        if (Helper.isMobile())
+        {
+            document.write("<script type='text/javascript' src='cordova.js' />");
+        }
+    </script>
     <script type="text/javascript" src="js/desktop.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/config.js"></script>
@@ -38,6 +43,7 @@
     <script type="text/javascript" src="js/onesignal.js"></script>
     <script type="text/javascript" src="js/pulldowntorefresh.js"></script>
     <script type="text/javascript" src="js/fileupload.js"></script>
+    <script type="text/javascript" src="js/audio.js"></script>
 
     <script type="text/javascript">
 
@@ -182,12 +188,13 @@
             </div>
             <div class="tab-pane fade" id="chatList" role="tabpanel" aria-labelledby="chat-list-tab">
                 <!--Список сотрудников для чата-->
-                <div class="frame">
+                <div class="frame chat-list-container">
                     <div id="sidepanel">
                         <div id="search">
                             <input type="text" class="resource-filter-input" id="resource-filter" placeholder="Поиск"/>
                             <i class="fa fa-search" aria-hidden="true" onclick="chatList.applyFilter()"></i>
                             <i class="fa fa-trash" aria-hidden="true" onclick="chatList.clearFilter()"></i>
+                            <i class="fa fa-refresh" onclick="chatList.loadChatList()"></i>
                         </div>
                         <div id="contacts">
                             <ul id="contacts-list">

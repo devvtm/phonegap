@@ -2,6 +2,8 @@ class ChatList {
 
     users = [];
     filter = "";
+    newMessagesCount = 0;
+    refreshListener = null;
 
     constructor()
     {
@@ -19,6 +21,7 @@ class ChatList {
             }
             else
             {
+                context.clearRefreshListener();
                 chat.loadChat(id, name);
             }
         });
@@ -35,6 +38,11 @@ class ChatList {
                 context.clearFilter();
             }
         });
+
+        $("#menu").find("a").click(function (e)
+        {
+            context.clearRefreshListener();
+        });
     }
 
     loadChatList()
@@ -45,6 +53,7 @@ class ChatList {
         $('#chat-list-tab').tab('show');
 
         context.clearFilter();
+        context.clearRefreshListener();
         application.showLoading();
 
         $.post(CONFIG.getResourcesUrl,
@@ -55,6 +64,13 @@ class ChatList {
             {
                 context.users = users;
                 context.updateChatListContainer();
+                context.initRefreshListener();
+
+                if (context.newMessagesCount > 0)
+                {
+                    context.playSoundAboutNewMessage();
+                }
+
                 application.hideLoading();
                 application.clearPullDownToRefresh();
             });
@@ -67,24 +83,72 @@ class ChatList {
         var template = Handlebars.compile(source);
 
         var $contacts = $('#contacts-list');
+
         $contacts.empty();
 
-        context.users.sort((a,b) => (a.count < b.count) ? 1 : ((a.count > b.count) ? -1 : 0));
+        context.users.sort((a, b) => (a.count < b.count) ? 1 : ((a.count > b.count) ? -1 : 0));
 
+        context.newMessagesCount = 0;
         context.users.forEach(function (el)
         {
+            context.newMessagesCount += el.count;
             if (context.filter != null && el.name.toLowerCase().indexOf(context.filter.toLowerCase()) == -1)
             {
                 return;
             }
 
-            el.countStyle = el.count > 0 ? "fa fa-comment" : "hide";
-
+            el.countStyle = el.count > 0 ? "new-message-count" : "hide";
             var child = template(el);
             $contacts.append(child);
         });
 
         context.loadUserProfileImages();
+    }
+
+    updateChatListNewMessages()
+    {
+        var context = this;
+        var currentUserId = localStorage.getItem('userId');
+        var source = document.getElementById("contact-template").innerHTML;
+        var template = Handlebars.compile(source);
+
+        $.post(CONFIG.getResourcesUrl,
+            {
+                currentUserId: currentUserId
+            },
+            function (users, status)
+            {
+                var messagesCount = 0;
+                context.users = users;
+                context.users.sort((a, b) => (a.count > b.count) ? 1 : ((a.count < b.count) ? -1 : 0));
+                context.users.forEach(function (el)
+                {
+                    messagesCount += el.count;
+                    el.countStyle = el.count > 0 ? "new-message-count" : "hide";
+
+                    var $contact = $('li.contact[data-id=' + el.id + ']');
+
+                    if ($contact)
+                    {
+                        if (el.count > 0)
+                        {
+                            var $contacts = $('#contacts-list');
+                            $contacts.remove
+                            $contact.prependTo('#contacts-list')
+                        }
+                        else
+                        {
+                            $contact.replaceWith(template(el));
+                        }
+                    }
+                });
+
+                if (messagesCount > 0 && context.newMessagesCount != messagesCount)
+                {
+                    context.newMessagesCount = messagesCount;
+                    context.playSoundAboutNewMessage();
+                }
+            });
     }
 
     applyFilter()
@@ -109,5 +173,36 @@ class ChatList {
                 $(this).attr('src', src);
             }
         );
+    }
+
+    playSoundAboutNewMessage()
+    {
+        var sound = new Howl({
+            src: [CONFIG.newMessageAudioUrl],
+            volume: 0.5,
+            onend: function ()
+            {
+            }
+        });
+        sound.play()
+    }
+
+    initRefreshListener()
+    {
+        var context = this;
+
+        this.refreshListener = setInterval(function ()
+        {
+            context.updateChatListNewMessages();
+
+        }, CONFIG.chatListRefreshTime);
+    }
+
+    clearRefreshListener()
+    {
+        if (this.refreshListener)
+        {
+            clearInterval(this.refreshListener)
+        }
     }
 }

@@ -299,7 +299,7 @@ table {
 
 .frame #sidepanel #contacts {
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
 }
 
@@ -635,6 +635,12 @@ table {
     color: #1f9fd1;
 }
 
+.chat-list-container
+{
+    height: 100% !important;
+    background: #ffffff !important;
+}
+
 .chat-message-content {
 
 }
@@ -649,6 +655,7 @@ table {
 
 #message-field {
     padding: 5px;
+    resize: none;
 }
 
 .file-count {
@@ -659,12 +666,22 @@ table {
     margin-left: -10px;
 }
 
-.new-message-count
-{
-    padding-top: 10px;
+.new-message-count {
     font-weight: bold !important;
-    color: #2781de;
-    text-align: center
+    background: #d8d2a6;
+    color: #000000;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    margin-top: 5px;
+    border-radius: 50%;
+}
+
+.new-message-count > i
+{
+    margin-top: 8px;
+    display: block;
+    font-size: 18px;
 }
 
 .chat-message-file {
