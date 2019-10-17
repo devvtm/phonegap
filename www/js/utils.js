@@ -32,7 +32,15 @@ class Helper {
         content = content.split('href="app').join('href="' + window.CONFIG.siteUrl + '/app');
         content = content.split('_self|_blank|_parent|_top').join('_system');
         content = content.split("target='_system'").join("");
-        content = content.split("href").join("target='_system' href");
+
+        if (Helper.isMobile())
+        {
+            content = content.split("href").join("target='_system' href");
+        }
+        else
+        {
+            content = content.split("href=").join("onclick='CONFIG.navigateTo(this.href); return false;' href=");
+        }
 
         return content;
     }

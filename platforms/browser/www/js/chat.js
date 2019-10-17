@@ -50,12 +50,14 @@ class Chat {
         }
     }
 
-    loadChat(id, name)
+    loadChat(id, name, group)
     {
         var context = this;
 
         localStorage.setItem('withResourceId', id);
         localStorage.setItem('chatName', name);
+        localStorage.setItem('groupChat', group);
+
         var now = new Date();
         var end = Date.now();
         var start = now.setDate(now.getDate() - 30);
@@ -79,7 +81,9 @@ class Chat {
     {
         var id = localStorage.getItem('withResourceId');
         var name = localStorage.getItem('chatName');
-        this.loadChat(id, name);
+        var group = localStorage.getItem('groupChat');
+
+        this.loadChat(id, name, group);
     }
 
     changeUI(chatName)
@@ -93,13 +97,12 @@ class Chat {
     loadMessages(start, end, callback)
     {
         var context = this;
-        var currentUserId = localStorage.getItem('userId');
-        var withResourceId = localStorage.getItem('withResourceId');
 
         $.post(CONFIG.getChatUrl,
             {
-                currentUserId: currentUserId,
-                withUserId: withResourceId,
+                currentUserId: localStorage.getItem('userId'),
+                withUserId: localStorage.getItem('withResourceId'),
+                groupChat: localStorage.getItem('groupChat'),
                 startDate: start,
                 endDate: end
             },
@@ -138,15 +141,12 @@ class Chat {
     {
         localStorage.setItem('chatDateEnd', end + 1000);
 
-        var currentUserId = localStorage.getItem('userId');
-        var withResourceId = localStorage.getItem('withResourceId');
-        var chatDateEnd = localStorage.getItem('chatDateEnd');
-
         $.post(CONFIG.setMessagesReadUrl,
             {
-                currentUserId: currentUserId,
-                withUserId: withResourceId,
-                sendDate: chatDateEnd
+                currentUserId: localStorage.getItem('userId'),
+                withUserId: localStorage.getItem('withResourceId'),
+                groupChat: localStorage.getItem('groupChat'),
+                sendDate: localStorage.getItem('chatDateEnd')
             },
             function (data, status)
             {
@@ -264,12 +264,10 @@ class Chat {
             return Helper.showNotification('Введите текст сообщения');
         }
 
-        var currentUserId = localStorage.getItem('userId');
-        var withResourceId = localStorage.getItem('withResourceId');
-
         var formData = new FormData();
-        formData.append('fromUserId', currentUserId);
-        formData.append('toUserId', withResourceId);
+        formData.append('fromUserId', localStorage.getItem('userId'));
+        formData.append('toUserId', localStorage.getItem('withResourceId'));
+        formData.append('groupChat', localStorage.getItem('groupChat'));
         formData.append('parentNotificationId', context.getLastNotificationId());
         formData.append('message', $field.val());
 

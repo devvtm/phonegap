@@ -15,15 +15,8 @@ class ChatList {
             var id = $(this).data('id');
             var name = $(this).data('name');
 
-            if (group)
-            {
-
-            }
-            else
-            {
-                context.clearRefreshListener();
-                chat.loadChat(id, name);
-            }
+            context.clearRefreshListener();
+            chat.loadChat(id, name, group);
         });
 
         $(document).on('keyup', '#resource-filter', function (e, item)
@@ -148,5 +141,11 @@ class ChatList {
         {
             clearInterval(this.refreshListener)
         }
+    }
+
+    createGroupChat()
+    {
+        var url = Helper.addAuthToUrl(CONFIG.createGroupChatUrl);
+        CONFIG.navigateTo(url);
     }
 }

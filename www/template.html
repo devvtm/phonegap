@@ -1,3 +1,4 @@
+<!--Элемент в списке пользователей-->
 <script id="contact-template" type="text/x-handlebars-template">
     <li class="contact" data-id="{{id}}" data-group="{{group}}" data-name="{{name}}">
         <div class="wrap">
@@ -19,18 +20,21 @@
     </li>
 </script>
 
+<!--Кнопка перехода к чату на странице входящих сообщений-->
 <script id="button-chat-template" type="text/x-handlebars-template">
     <button type='button' class='btn btn-primary btn-sm link-btn margin-5'
-            onclick='chat.loadChat({{authorId}}, "{{authorName}}")'>
+            onclick='chat.loadChat({{authorId}}, "{{authorName}}", false)'>
         <i class='fa fa-comments fa-2x'></i>
     </button>
 </script>
 
+<!--Кнопка отметки о прочтении на странице входящих сообщений-->
 <script id="button-read-template" type="text/x-handlebars-template">
     <button type='button' class='btn btn-success btn-sm link-btn margin-5'
             onclick='chat.setMessageRead({{confirmationId}})'><i class='fa fa-check fa-2x'></i></button>
 </script>
 
+<!--Шаблон для совещаний-->
 <script id="meeting-item-template" type="text/x-handlebars-template">
     <tr style='background-color: DataContainer.getMeetingsStatusColor("{{status}}")'>
         <td>{{content}}
@@ -39,13 +43,20 @@
     </tr>
 </script>
 
+<!--Шаблон для сообщения в чате-->
 <script id="chat-item-template" type="text/x-handlebars-template">
     <li class="{{style}}" data-id="{{notificationId}}">
         <div>
-            <p class="chat-message-header">{{subject}}</p>
-            <p class="chat-message-content">{{encode message}}</p>
+            <p class="chat-message-header">
+                {{subject}}
+            </p>
+            <p class="chat-message-content">
+                {{encode message}}
+            </p>
             {{#if linkCaption}}
-            <a href="{{setAuth linkHref}}" role="button" class="btn btn-success width100">{{linkCaption}}</a>
+                <a href="{{setAuth linkHref}}" onclick="CONFIG.navigateTo(this.href); return false;" role="button" class="btn btn-success width100">
+                    {{linkCaption}}
+                </a>
             {{/if}}
 
             {{#each files}}

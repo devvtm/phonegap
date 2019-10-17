@@ -24,31 +24,35 @@ var CONFIG = {
     // MediaController
     getUserImageUrl: null,
 
-    // Audio
+    // Other
     newMessageAudioUrl: null,
-
+    createGroupChatUrl: null,
 
     initConfig: function ()
     {
         var server = localStorage.getItem('server');
+        this.siteUrl = localStorage.getItem('siteUrl');
 
-        switch (server)
+        if (Helper.isEmpty(this.siteUrl))
         {
-            case "VTM":
+            switch (server)
             {
-                //this.siteUrl = "https://proj.vtm-dorproekt.ru:9443/";
-                this.siteUrl = "http://127.0.0.1:8090/";
-                break;
-            }
-            case "IKPAD":
-            {
-                this.siteUrl = "http://94.141.62.220:8181/";
-                break;
-            }
-            case "MERIDIAN":
-            {
-                this.siteUrl = "http://217.173.79.42:8181/";
-                break;
+                case "VTM":
+                {
+                    //this.siteUrl = "https://proj.vtm-dorproekt.ru:9443/";
+                    this.siteUrl = "http://127.0.0.1:8090/";
+                    break;
+                }
+                case "IKPAD":
+                {
+                    this.siteUrl = "http://94.141.62.220:8181/";
+                    break;
+                }
+                case "MERIDIAN":
+                {
+                    this.siteUrl = "http://217.173.79.42:8181/";
+                    break;
+                }
             }
         }
 
@@ -67,8 +71,8 @@ var CONFIG = {
         this.setMessagesReadUrl = this.buildAction("mobileappmessage/setMessagesRead");
 
         this.getUserImageUrl = this.buildAction("media/getUserImage");
-        this.newMessageAudioUrl = this.buildAction("audio/message.mp3")
-
+        this.newMessageAudioUrl = this.buildAction("audio/message.mp3");
+        this.createGroupChatUrl = this.buildAction("app#MiniChatAllRooms/create=true")
     },
 
     buildAction: function (url)
@@ -89,5 +93,17 @@ var CONFIG = {
     buildUrl: function (page, param, value)
     {
         return page + "?" + param + "=" + value;
+    },
+
+    navigateTo: function (url)
+    {
+        if (Helper.isMobile())
+        {
+            window.open('url', '_system');
+        }
+        else
+        {
+            top.window.location.href = url;
+        }
     }
 };

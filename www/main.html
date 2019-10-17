@@ -49,7 +49,6 @@
 
         $(document).ready(function ()
         {
-            Desktop.initLocalStorageData();
             window.application = new App();
             application.disableBackButton();
             application.initPullDownToRefresh();
@@ -162,8 +161,8 @@
             </div>
             <div class="tab-pane fade" id="chat" role="tabpanel" aria-labelledby="chat-tab">
                 <!--Чат-->
-                <div class="frame">
-                    <div class="content">
+                <div class="frame chat-message-container">
+                    <div class="content chat-message-container">
                         <div class="contact-profile" id="chat-name">
 
                         </div>
@@ -191,6 +190,11 @@
             </div>
             <div class="tab-pane fade" id="chatList" role="tabpanel" aria-labelledby="chat-list-tab">
                 <!--Список сотрудников для чата-->
+                <div id="create-group-chat-button" class="chat-icon">
+                    <button type="button" class="btn btn-success" onclick="chatList.createGroupChat()">
+                        <i class="fa fa-plus-circle fa-3x"></i>
+                    </button>
+                </div>
                 <div class="frame chat-list-container">
                     <div id="sidepanel">
                         <div id="search">

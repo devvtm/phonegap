@@ -1,4 +1,3 @@
-
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
     display: block
 }
@@ -487,10 +486,12 @@ table {
 }
 
 .frame .content .messages {
-    height: calc(100% - 105px);
+    height: calc(100% - 70px);
     width: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .frame .content .messages::-webkit-scrollbar {
@@ -641,8 +642,12 @@ table {
     background: #ffffff !important;
 }
 
-.chat-message-content {
+.chat-message-container
+{
+    /*background: #E6EAEA !important;*/
+}
 
+.chat-message-content {
 }
 
 .chat-message-footer {

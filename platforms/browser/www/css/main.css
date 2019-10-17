@@ -402,7 +402,7 @@ html {
 }
 
 .page-header-container {
-    margin: 10px;
+    padding: 10px;
     display: flex;
 }
 
@@ -456,6 +456,7 @@ html {
     position: fixed;
     right: 10px;
     bottom: 10px;
+    z-index: 9999;
 }
 
 
