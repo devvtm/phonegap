@@ -40,7 +40,7 @@ var CONFIG = {
                 case "VTM":
                 {
                     //this.siteUrl = "https://proj.vtm-dorproekt.ru:9443/";
-                    this.siteUrl = "http://127.0.0.1:8090/";
+                    this.siteUrl = "http://192.168.0.105:8090/";
                     break;
                 }
                 case "IKPAD":
@@ -99,7 +99,7 @@ var CONFIG = {
     {
         if (Helper.isMobile())
         {
-            window.open('url', '_system');
+            window.open(url, '_system');
         }
         else
         {
