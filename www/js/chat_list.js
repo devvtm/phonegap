@@ -67,7 +67,18 @@ class ChatList {
 
                 application.hideLoading();
                 application.clearPullDownToRefresh();
+                context.updateNewMessagesCountInLeftAccordion();
             });
+    }
+
+    updateNewMessagesCountInLeftAccordion()
+    {
+        var refreshBtn = parent.document.getElementById('message-refresh-btn');
+
+        if (refreshBtn)
+        {
+            refreshBtn.click();
+        }
     }
 
     updateChatListContainer()

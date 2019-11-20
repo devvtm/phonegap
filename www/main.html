@@ -136,7 +136,7 @@
             </button>
 
             <span id="chat-back-btn" class="back-btn" style="display: none">
-                    <i class="fa fa-chevron-left"></i>
+                    <i class="fa fa-users"></i>
             </span>
 
             <div id='top-header-label' class="top-header">
@@ -172,12 +172,12 @@
                         <div class="message-input">
                             <div class="wrap">
                                 <textarea id="message-field" type="text" placeholder="Введите сообщение"></textarea>
+                                <button class="submit btn btn-success create-message-button border-right">
+                                    <i class="fa fa-share fa-2x" onclick="chat.sendMessage()"></i>
+                                </button>
                                 <button class="button btn btn-success border-right">
                                     <i class="file-count" id="file-count-label"></i>
                                     <i class="fa fa-paperclip fa-2x" onclick="chat.addAttachment()"></i>
-                                </button>
-                                <button class="submit btn btn-success create-message-button border-right">
-                                    <i class="fa fa-share fa-2x" onclick="chat.sendMessage()"></i>
                                 </button>
                                 <button class="submit btn btn-success">
                                     <i class="fa fa-refresh fa-2x" onclick="chat.loadLastNewMessages()"></i>

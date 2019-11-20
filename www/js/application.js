@@ -155,5 +155,4 @@ class App {
     {
         $('body').removeClass('loading');
     }
-
 }
